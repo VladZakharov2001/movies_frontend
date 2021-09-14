@@ -29,7 +29,6 @@ const Authorization = () => {
       setIsCorrectValue(false);
     }
   };
-  console.log(isCorrectValue);
   return (
     <div>
       <Container>
