@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Main = (props: any) => {
+const MainPage = (props: any) => {
   const genres = ["Фантастика", "Комедия", "Детектив"];
   localStorage.setItem("genres", JSON.stringify(genres));
 
@@ -16,4 +16,4 @@ const Main = (props: any) => {
     </div>
   );
 };
-export default Main;
+export default MainPage;

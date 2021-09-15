@@ -1,6 +1,6 @@
 import { TextField } from "@material-ui/core";
 import React, { ReactElement } from "react";
-import { Form, Field } from "react-final-form";
+import { Field } from "react-final-form";
 import { Error } from "./styled";
 const FieldInput = ({
   name,
@@ -20,7 +20,11 @@ const FieldInput = ({
             placeholder={name}
             variant="outlined"
           />
-          <Error>{meta.error && meta.touched && <div>{meta.error}</div>}</Error>
+          <Error>
+            {(meta.error || meta.submitError) && meta.touched && (
+              <span>{meta.error || meta.submitError}</span>
+            )}
+          </Error>
         </div>
       )}
     </Field>
