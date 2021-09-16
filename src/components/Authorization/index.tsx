@@ -6,8 +6,9 @@ import logo from "./logo.svg";
 import { Container, Logo, ButtonCome, Password } from "./styles";
 import { Button } from "@material-ui/core";
 import { FORM_ERROR } from "final-form";
-
-const Authorization = () => {
+const Authorization = (props: {
+  getValueAuth: (value: boolean) => boolean;
+}) => {
   const history = useHistory();
   const required = (value: string): string => {
     return value ? "" : "Empty field";
@@ -20,6 +21,7 @@ const Authorization = () => {
     if (values.password !== localStorage.getItem("password")) {
       return { [FORM_ERROR]: "Invalid password" };
     }
+    props.getValueAuth(true);
     history.push("/");
   };
   return (

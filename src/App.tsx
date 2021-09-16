@@ -4,24 +4,35 @@ import MainPage from "./components/MainPages";
 import GlobalStyle from "./GlobalStyle";
 import PrivateRoute from "./PrivateRoute";
 import user from "../src/components/Authorization/constants";
+import { AuthContext } from "./components/Authorization/context";
+import { useEffect, useState } from "react";
 const App: React.FC = () => {
-  if (localStorage.getItem("login") !== "null") {
-    localStorage.setItem("login", user.USER_LOGIN[0]);
-  }
-  if (localStorage.getItem("password") !== "null") {
-    localStorage.setItem("password", user.USER_PASSWORD[0]);
-  }
-
+  useEffect(() => {
+    if (localStorage.getItem("login") !== "null") {
+      localStorage.setItem("login", user.USER_LOGIN[0]);
+    }
+    if (localStorage.getItem("password") !== "null") {
+      localStorage.setItem("password", user.USER_PASSWORD[0]);
+    }
+  }, []);
+  const [valueAuth, setValueAuth] = useState(false);
+  const getValueAuth = (value: boolean): boolean => {
+    console.log(value);
+    setValueAuth(value);
+    return value;
+  };
   return (
     <div>
       <GlobalStyle />
       <Switch>
-        <PrivateRoute exact path="/">
-          <MainPage />
-        </PrivateRoute>
-        <Route exact path="/login">
-          <Authorization />
-        </Route>
+        <AuthContext.Provider value={valueAuth}>
+          <PrivateRoute exact path="/">
+            <MainPage />
+          </PrivateRoute>
+          <Route exact path="/login">
+            <Authorization getValueAuth={getValueAuth} />
+          </Route>
+        </AuthContext.Provider>
       </Switch>
     </div>
   );
