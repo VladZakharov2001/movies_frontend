@@ -17,7 +17,6 @@ const App: React.FC = () => {
   }, []);
   const [valueAuth, setValueAuth] = useState(false);
   const getValueAuth = (value: boolean): boolean => {
-    console.log(value);
     setValueAuth(value);
     return value;
   };

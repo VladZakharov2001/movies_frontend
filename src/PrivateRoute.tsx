@@ -4,7 +4,6 @@ import { AuthContext } from "./components/Authorization/context";
 import { useContext } from "react";
 const PrivateRoute = ({ children, ...rest }: any): ReactElement => {
   const isAuth = useContext(AuthContext);
-  console.log("kk", isAuth);
   return (
     <Route
       {...rest}
