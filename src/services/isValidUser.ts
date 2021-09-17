@@ -1,9 +1,8 @@
 export const isValidUser = (login: string, password: string): Boolean => {
-  const usersSting = localStorage.getItem("users");
+  const usersString = localStorage.getItem("users");  
+  if (usersString === null) return false;
 
-  if (usersSting === null) return false;
-
-  if (password !== JSON.parse(usersSting)[login]) {
+  if (password !== JSON.parse(usersString)[login]) {
     return true;
   } else {
     return false;
