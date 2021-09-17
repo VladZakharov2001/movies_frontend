@@ -6,6 +6,7 @@ import logo from "./logo.svg";
 import { Container, Logo, ButtonCome, Password } from "./styles";
 import { Button } from "@material-ui/core";
 import { FORM_ERROR } from "final-form";
+import { isValidUser } from "../../services/isValidUser";
 const Authorization = (props: {
   getValueAuth: (value: boolean) => boolean;
 }) => {
@@ -15,15 +16,13 @@ const Authorization = (props: {
   };
 
   const onSubmit = (values: any) => {
-    if (values.login !== localStorage.getItem("login")) {
-      return { login: "Unknown username" };
-    }
-    if (values.password !== localStorage.getItem("password")) {
-      return { [FORM_ERROR]: "Invalid password" };
+    if (isValidUser(values.login, values.password)) {
+      return { [FORM_ERROR]: "Incorrect data" };
     }
     props.getValueAuth(true);
     history.push("/");
   };
+
   return (
     <div>
       <Container>

@@ -3,23 +3,18 @@ import Authorization from "./components/Authorization";
 import MainPage from "./components/MainPages";
 import GlobalStyle from "./GlobalStyle";
 import PrivateRoute from "./PrivateRoute";
-import user from "../src/components/Authorization/constants";
+import { FillAuthData } from "./services/FillAuthData";
 import { AuthContext } from "./components/Authorization/context";
 import { useEffect, useState } from "react";
 const App: React.FC = () => {
-  useEffect(() => {
-    if (localStorage.getItem("login") !== "null") {
-      localStorage.setItem("login", user.USER_LOGIN[0]);
-    }
-    if (localStorage.getItem("password") !== "null") {
-      localStorage.setItem("password", user.USER_PASSWORD[0]);
-    }
-  }, []);
+  FillAuthData();
+
   const [valueAuth, setValueAuth] = useState(false);
   const getValueAuth = (value: boolean): boolean => {
     setValueAuth(value);
     return value;
   };
+
   return (
     <div>
       <GlobalStyle />
