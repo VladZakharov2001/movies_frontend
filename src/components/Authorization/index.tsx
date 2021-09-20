@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { Form } from "react-final-form";
 import { useHistory } from "react-router-dom";
 import FieldInput from "./components/FieldInput/index";
@@ -6,23 +6,26 @@ import logo from "./logo.svg";
 import { Container, Logo, ButtonCome, Password } from "./styles";
 import { Button } from "@material-ui/core";
 import { FORM_ERROR } from "final-form";
-import { isValidUser } from "../../services/isValidUser";
-const Authorization = (props: {
-  getValueAuth: (value: boolean) => boolean;
-}) => {
+import { isValidUser } from "../../services/FillandisValidateData";
+import { useTranslation } from "react-i18next";
+const Authorization = (props: { isLogged: (value: boolean) => void }) => {
+  const { t, i18n } = useTranslation();
   const history = useHistory();
   const required = (value: string): string => {
-    return value ? "" : "Empty field";
+    return value ? "" : t("authorization.emptyFiled");
   };
 
   const onSubmit = (values: any) => {
     if (isValidUser(values.login, values.password)) {
-      return { [FORM_ERROR]: "Incorrect data" };
+      return { [FORM_ERROR]: t("authorization.incorrectData") };
     }
-    props.getValueAuth(true);
+    props.isLogged(true);
     history.push("/");
   };
 
+  const changeLanguage = (lang: string): void => {
+    i18n.changeLanguage(lang);
+  };
   return (
     <div>
       <Container>
@@ -43,7 +46,7 @@ const Authorization = (props: {
                 {submitError && <div className="error">{submitError}</div>}
                 <ButtonCome>
                   <Button variant="outlined" type="submit">
-                    Войти
+                    {t("authorization.logIn")}
                   </Button>
                 </ButtonCome>
               </div>
@@ -51,6 +54,12 @@ const Authorization = (props: {
           )}
         />
       </Container>
+      <Button variant="outlined" onClick={() => changeLanguage("ru")}>
+        ru
+      </Button>
+      <Button variant="outlined" onClick={() => changeLanguage("en")}>
+        en
+      </Button>
     </div>
   );
 };

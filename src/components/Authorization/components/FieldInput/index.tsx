@@ -1,6 +1,7 @@
 import { TextField } from "@material-ui/core";
 import React, { ReactElement } from "react";
 import { Field } from "react-final-form";
+import { useTranslation } from "react-i18next";
 import { Error } from "./styled";
 const FieldInput = ({
   name,
@@ -9,11 +10,12 @@ const FieldInput = ({
   name: string;
   validate: (value: string) => string;
 }): ReactElement => {
+  const { t } = useTranslation();
   return (
     <Field name={name} validate={validate}>
       {({ input, meta }) => (
         <div>
-          <div>{name}</div>
+          {<div>{t(`authorization.${name}`)}</div>}
           <TextField
             {...input}
             type="text"

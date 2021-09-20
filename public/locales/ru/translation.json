@@ -1,0 +1,9 @@
+{
+    "authorization":{
+        "login": "Логин",
+        "password": "Пароль",
+        "logIn": "Войти",
+        "incorrectData": "Неверный логин или пароль",
+        "emptyFiled": "Пустое поле"
+    }   
+}
