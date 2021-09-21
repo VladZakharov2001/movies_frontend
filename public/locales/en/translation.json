@@ -1,0 +1,9 @@
+{
+    "authorization":{
+        "login": "Login",
+        "password": "Password",
+        "logIn": "Log in",
+        "incorrectData" : "incorrect data",
+        "emptyFiled" : "Empty Filed"
+    }   
+}
