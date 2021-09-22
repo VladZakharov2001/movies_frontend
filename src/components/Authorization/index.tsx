@@ -20,6 +20,7 @@ const Authorization = (props: { isLogged: (value: boolean) => void }) => {
       return { [FORM_ERROR]: t("authorization.incorrectData") };
     }
     props.isLogged(true);
+    localStorage.setItem("сurrentLogin", values.login);
     history.push("/");
   };
 
