@@ -6,7 +6,7 @@ import PrivateRoute from "./PrivateRoute";
 import { AuthContext } from "./components/Authorization/context";
 import { useEffect, useState } from "react";
 import { FillAuthData } from "./services/FillandisValidateData";
-
+import AddFilm from "./components/AddFilm/index";
 const App: React.FC = () => {
   FillAuthData();
 
@@ -18,6 +18,9 @@ const App: React.FC = () => {
         <AuthContext.Provider value={isLogged}>
           <PrivateRoute exact path="/">
             <MainPage />
+          </PrivateRoute>
+          <PrivateRoute exact path="/add">
+            <AddFilm />
           </PrivateRoute>
           <Route exact path="/login">
             <Authorization isLogged={setisLogged} />
