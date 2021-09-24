@@ -1,48 +1,60 @@
 import { useEffect } from "react";
-import { Route, Router, Switch } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import { Button } from "@material-ui/core";
 import { WiewFilms } from "../../../AddFilm/styled";
 import checkMark from "./chekMark.svg";
 import crossMark from "./crossMark.svg";
 import { CheckFilm } from "./styled";
-const AddFilm: React.FC = () => {
-  const URLMOVIES =
-    "https://api.themoviedb.org/3/discover/movie?api_key=9ab8bf7eac8227309d7ec67bab0298b3&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
-
+import { URL_MOVIES, URL_POSTERS } from "./constants";
+import CheckingFilm from "./components/CheckingFilm";
+const RowFavMovies = (): any => {
   const [films, setFilms] = useState<any[]>([]);
-  const [checkingMark, setCheckingMark] = useState<boolean>(false);
+  const [checked, setChecked] = useState<boolean>(false);
+
   useEffect(() => {
-    axios.get(URLMOVIES).then((res) => {
-      setFilms([...res.data.results]);
-    });
+    axios
+      .get(
+        `${URL_MOVIES}${process.env.REACT_APP_API}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
+      )
+      .then((res) => {
+        console.log({ res });
+        setFilms(
+          res.data.results.map((film: any) => ({
+            ...film,
+            check: false,
+          }))
+        );
+      });
   }, []);
-  console.log("bb", films);
+
+  const handleView = (index: number): void => {
+    films[index].check = !films[index].check;
+    setFilms([...films]);
+  };
+
+  const deleteView = (index: number): void => {
+    films.splice(index, 1);
+    setFilms([...films]);
+  };
   return (
     <div>
-      <div>Choose your destiny</div>
-      {console.log("filmwiew", films)}
+      <h4>You favorite movies</h4>
       {films.map((film, index) => {
         return (
           <div>
             <span>
               <WiewFilms>
                 <p>{index}</p>
-                <CheckFilm checkingMark={checkingMark}>
-                  <p>{film.original_title}</p>
-                </CheckFilm>
-                <img
-                  src={`https://image.tmdb.org/t/p/w200/${film.backdrop_path}`}
+                <CheckingFilm
+                  checkingMark={films[index].check}
+                  title={film.original_title}
                 />
+                <img src={`${URL_POSTERS}${film.backdrop_path}`} />
                 <p>Популярность{film.popularity}</p>
                 <p>Дата релиза{film.release_date}</p>
                 <div>
-                  <img
-                    src={checkMark}
-                    onClick={() => setCheckingMark(!checkingMark)}
-                  />
-                  <img src={crossMark} />
+                  <img src={checkMark} onClick={() => handleView(index)} />
+                  <img src={crossMark} onClick={() => deleteView(index)} />
                 </div>
               </WiewFilms>
             </span>
@@ -52,4 +64,4 @@ const AddFilm: React.FC = () => {
     </div>
   );
 };
-export default AddFilm;
+export default RowFavMovies;
