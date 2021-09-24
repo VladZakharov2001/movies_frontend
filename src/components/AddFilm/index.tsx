@@ -9,6 +9,7 @@ const AddFilm: React.FC = () => {
     "https://api.themoviedb.org/3/discover/movie?api_key=9ab8bf7eac8227309d7ec67bab0298b3&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
 
   const [films, setFilms] = useState<any[]>([]);
+
   useEffect(() => {
     axios.get(URLMOVIES).then((res) => {
       setFilms([...res.data.results]);
