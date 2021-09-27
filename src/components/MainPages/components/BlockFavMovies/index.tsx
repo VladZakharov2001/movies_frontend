@@ -38,7 +38,7 @@ const BlockFavMovies = (): any => {
   return (
     <div>
       <h4>You favorite movies</h4>
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!
+      <div>Блочный</div>
       {films.map((film, index) => {
         return (
           <div>
