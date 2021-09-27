@@ -17,7 +17,6 @@ const RowFavMovies = (): any => {
         `${URL_MOVIES}${process.env.REACT_APP_API}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
-        console.log({ res });
         setFilms(
           res.data.results.map((film: any) => ({
             ...film,

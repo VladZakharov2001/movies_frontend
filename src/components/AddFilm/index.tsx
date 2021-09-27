@@ -15,11 +15,9 @@ const AddFilm: React.FC = () => {
       setFilms([...res.data.results]);
     });
   }, []);
-  console.log("bb", films);
   return (
     <div>
       <div>Choose your destiny</div>
-      {console.log("filmwiew", films)}
       {films.map((film, index) => {
         return (
           <div>
