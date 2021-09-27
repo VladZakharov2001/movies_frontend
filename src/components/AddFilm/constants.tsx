@@ -1,0 +1,1 @@
+export const URL_MOVIES_ADD = `https://api.themoviedb.org/3/discover/movie?api_key=`
