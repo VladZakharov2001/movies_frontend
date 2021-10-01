@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-import { WiewFilms } from "../../../AddFilm/styled";
+import { ViewFilms } from "../../../AddFilm/styled";
 import checkMark from "./chekMark.svg";
 import crossMark from "./crossMark.svg";
 import { CheckFilm } from "./styled";
@@ -42,7 +42,7 @@ const RowFavMovies = (): any => {
         return (
           <div>
             <span>
-              <WiewFilms>
+              <ViewFilms>
                 <p>{index}</p>
                 <CheckingFilm
                   checkingMark={films[index].check}
@@ -55,7 +55,7 @@ const RowFavMovies = (): any => {
                   <img src={checkMark} onClick={() => handleView(index)} />
                   <img src={crossMark} onClick={() => deleteView(index)} />
                 </div>
-              </WiewFilms>
+              </ViewFilms>
             </span>
           </div>
         );
