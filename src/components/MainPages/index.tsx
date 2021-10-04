@@ -2,31 +2,46 @@ import { Link, NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@material-ui/core";
-import { URL_API } from "./constants";
-import RowFavMovies from "./components/RowFavMovies/index";
-import BlockFavMovies from "./components/BlockFavMovies/index";
+import RowOrBlockViewFavMovies from "./components/RowOrBlockViewFavMovies/index";
 import View from "../MainPages/components/View/index";
 import SessionCheck from "./components/SessionCheck/index";
-const MainPage = (props: any) => {
+import { GettingGanres } from "../../services/GettingData";
+import { useTranslation } from "react-i18next";
+
+const MainPage = () => {
   const [ganres, setGanres] = useState<any[]>([]);
   const [view, setView] = useState<boolean>(false);
+  const [langFlag, setLangFlag] = useState<string>("en");
+  const { t, i18n } = useTranslation();
+
+  const getGenres = (lang: string): void => {
+    GettingGanres(lang).then((res) => {
+      setGanres(
+        res.map((ganres, index) => ({
+          id: index,
+          watched: false,
+          name: ganres.name,
+        }))
+      );
+    });
+  };
 
   useEffect(() => {
-    axios
-      .get(`${URL_API}${process.env.REACT_APP_API}&language=en-US`)
-      .then((res) => {
-        setGanres(
-          res.data.genres.map((ganres: any, index: number) => ({
-            id: index,
-            watched: false,
-            name: ganres.name,
-          }))
-        );
-      });
+    getGenres("ru");
   }, []);
 
   localStorage.setItem("ganres", JSON.stringify(ganres));
-  const handleCheck = (index: any): void => {
+
+  useEffect(() => {
+    langFlag === "ru" ? getGenres("ru") : getGenres("en");
+  }, [langFlag]);
+
+  const changeLanguage = (lang: string): void => {
+    setLangFlag(lang);
+    i18n.changeLanguage(lang);
+  };
+
+  const handleCheck = (index: number): void => {
     ganres[index].watched = !ganres[index].watched;
     setGanres([...ganres]);
   };
@@ -35,7 +50,13 @@ const MainPage = (props: any) => {
     <div>
       <SessionCheck />
       <div>
-        <h3>Select you favorite genres</h3>
+        <Button variant="outlined" onClick={() => changeLanguage("ru")}>
+          ru
+        </Button>
+        <Button variant="outlined" onClick={() => changeLanguage("en")}>
+          en
+        </Button>
+        <h3>{t("mainPage.selectYouFavGenres")}</h3>
         {ganres &&
           ganres.map((ganres, index) => (
             <Button
@@ -50,11 +71,11 @@ const MainPage = (props: any) => {
           ))}
       </div>
       <NavLink to="/add">
-        <Button variant="outlined">ADD</Button>
+        <Button variant="outlined">{t("addFilmPage.add")}</Button>
       </NavLink>
-      <View viewB={view} onClick={() => setView(false)} symbolb={"C"} />
-      <View viewB={!view} onClick={() => setView(true)} symbolb={"Б"} />
-      {view ? <BlockFavMovies /> : <RowFavMovies />}
+      <View viewB={view} onClick={() => setView(false)} symbolView={"Б"} />
+      <View viewB={!view} onClick={() => setView(true)} symbolView={"С"} />
+      {view ? <RowOrBlockViewFavMovies /> : <div>Блочный</div>}
     </div>
   );
 };

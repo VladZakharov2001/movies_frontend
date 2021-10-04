@@ -1,16 +1,16 @@
 import React, { FC } from "react";
 import { ChangeView } from "./styled";
 
-interface Props {
+interface IProps {
   viewB: boolean;
-  symbolb: string;
+  symbolView: string;
   onClick: () => void;
 }
-const View: FC<Props> = ({ viewB, symbolb, onClick }): any => {
+const View: FC<IProps> = ({ viewB, symbolView, onClick }): JSX.Element => {
   return (
     <div>
       <ChangeView blockView={!viewB}>
-        <button onClick={onClick}>{symbolb}</button>
+        <button onClick={onClick}>{symbolView}</button>
       </ChangeView>
     </div>
   );

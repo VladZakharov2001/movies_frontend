@@ -8,4 +8,3 @@ export const ChangeView = styled.button<{ blockView: boolean }>`
     background-color: white;
   }
 `;
-  

@@ -5,5 +5,16 @@
         "logIn": "Log in",
         "incorrectData" : "incorrect data",
         "emptyFiled" : "Empty Filed"
-    }   
+    },
+    "mainPage":{
+        "selectYouFavGenres": "Select you favorite genres"
+    },
+    "addFilmPage":{
+        "popularity" : "Popularity",
+        "releaseDate" : "Release date",
+        "save" : "Save it",
+        "chooseYD" : "Choose your destiny",
+        "youFavMovies":"You favorite movies",
+        "add" : "ADD"
+    }
 }

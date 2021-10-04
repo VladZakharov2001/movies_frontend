@@ -1,1 +1,1 @@
-export const URL_MOVIES_ADD = `https://api.themoviedb.org/3/discover/movie?api_key=`
+export const FILM_IMG = `https://image.tmdb.org/t/p/w200/`;

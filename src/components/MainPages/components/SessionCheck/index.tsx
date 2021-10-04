@@ -6,9 +6,7 @@ const SessionCheck = (): any => {
   return (
     <div>
       Hello,
-      {localStorage.getItem("сurrentLogin") !== null
-        ? localStorage.getItem("сurrentLogin")
-        : ""}
+      {localStorage.getItem("сurrentLogin")}
       <Link onClick={deleteSession} to="/login">
         Log out
       </Link>
