@@ -1,14 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
-const SessionCheck = (): any => {
+import { useTranslation } from "react-i18next";
+
+const SessionCheck = (): JSX.Element => {
+  const { t, i18n } = useTranslation();
   const deleteSession = (): void => {
     localStorage.removeItem("сurrentLogin");
   };
   return (
     <div>
-      Hello,
-      {localStorage.getItem("сurrentLogin")}
+      {t("SessionCheck.hello")},{localStorage.getItem("сurrentLogin")}
       <Link onClick={deleteSession} to="/login">
-        Log out
+        {t("SessionCheck.logout")}
       </Link>
     </div>
   );

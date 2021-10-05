@@ -5,22 +5,22 @@ import { Button } from "@material-ui/core";
 import RowOrBlockViewFavMovies from "./components/RowOrBlockViewFavMovies/index";
 import View from "../MainPages/components/View/index";
 import SessionCheck from "./components/SessionCheck/index";
-import { GettingGanres } from "../../services/GettingData";
+import { GetDataGenres } from "../../services/GetData";
 import { useTranslation } from "react-i18next";
 
 const MainPage = () => {
-  const [ganres, setGanres] = useState<any[]>([]);
+  const [genres, setgenres] = useState<any[]>([]);
   const [view, setView] = useState<boolean>(false);
   const [langFlag, setLangFlag] = useState<string>("en");
   const { t, i18n } = useTranslation();
 
   const getGenres = (lang: string): void => {
-    GettingGanres(lang).then((res) => {
-      setGanres(
-        res.map((ganres, index) => ({
-          id: index,
+    GetDataGenres(lang).then((res) => {
+      setgenres(
+        res.map((genres, index) => ({
+          id: genres.id,
           watched: false,
-          name: ganres.name,
+          name: genres.name,
         }))
       );
     });
@@ -29,8 +29,6 @@ const MainPage = () => {
   useEffect(() => {
     getGenres("ru");
   }, []);
-
-  localStorage.setItem("ganres", JSON.stringify(ganres));
 
   useEffect(() => {
     langFlag === "ru" ? getGenres("ru") : getGenres("en");
@@ -42,9 +40,11 @@ const MainPage = () => {
   };
 
   const handleCheck = (index: number): void => {
-    ganres[index].watched = !ganres[index].watched;
-    setGanres([...ganres]);
+    genres[index].watched = !genres[index].watched;
+    setgenres([...genres]);
   };
+
+  localStorage.setItem("genres", JSON.stringify(genres));
 
   return (
     <div>
@@ -57,16 +57,16 @@ const MainPage = () => {
           en
         </Button>
         <h3>{t("mainPage.selectYouFavGenres")}</h3>
-        {ganres &&
-          ganres.map((ganres, index) => (
+        {genres &&
+          genres.map((genres, index) => (
             <Button
               variant="outlined"
               onClick={() => {
                 handleCheck(index);
               }}
-              color={ganres.watched ? "primary" : "success"}
+              color={genres.watched ? "primary" : "success"}
             >
-              {ganres.name}
+              {genres.name}
             </Button>
           ))}
       </div>

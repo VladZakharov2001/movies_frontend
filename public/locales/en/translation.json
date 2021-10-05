@@ -16,5 +16,9 @@
         "chooseYD" : "Choose your destiny",
         "youFavMovies":"You favorite movies",
         "add" : "ADD"
+    },
+    "SessionCheck":{
+        "hello" : "Hello",
+        "logout": "Log out"
     }
 }
