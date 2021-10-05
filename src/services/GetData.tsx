@@ -26,6 +26,5 @@ export const GetDataGenres = async (
   const res = await axios.get(
     `${URL_GENRES}?api_key=${process.env.REACT_APP_API}&language=${language}-${language}`
   );
-  console.log("gg", res.data.genres);
   return res.data.genres;
 };
