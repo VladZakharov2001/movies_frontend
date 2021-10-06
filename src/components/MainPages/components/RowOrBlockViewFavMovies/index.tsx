@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ViewFilms } from "../../../AddFilm/styled";
 import checkMark from "./chekMark.svg";
 import crossMark from "./crossMark.svg";
-import { URL_POSTERS } from "./constants";
+import { URL_POSTERS } from "../../../../GlobalConstants";
 import CheckingFilm from "./components/CheckingFilm";
 import { useTranslation } from "react-i18next";
 import { GetDataMovies } from "../../../../services/GetData";

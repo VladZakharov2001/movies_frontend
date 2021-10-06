@@ -1,7 +1,7 @@
 import axios from "axios";
 import { URL_GENRES, URL_MOVIES } from "../GlobalConstants";
 
-interface IGanre {
+interface IGenre {
   id: number;
   name: string;
 }
@@ -22,7 +22,7 @@ export const GetDataMovies = async (
 
 export const GetDataGenres = async (
   language: string
-): Promise<Array<IGanre>> => {
+): Promise<Array<IGenre>> => {
   const res = await axios.get(
     `${URL_GENRES}?api_key=${process.env.REACT_APP_API}&language=${language}-${language}`
   );

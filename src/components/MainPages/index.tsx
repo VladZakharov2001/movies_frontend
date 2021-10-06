@@ -9,14 +9,14 @@ import { GetDataGenres } from "../../services/GetData";
 import { useTranslation } from "react-i18next";
 
 const MainPage = () => {
-  const [genres, setgenres] = useState<any[]>([]);
+  const [genres, setGenres] = useState<any[]>([]);
   const [view, setView] = useState<boolean>(false);
   const [langFlag, setLangFlag] = useState<string>("en");
   const { t, i18n } = useTranslation();
 
   const getGenres = (lang: string): void => {
     GetDataGenres(lang).then((res) => {
-      setgenres(
+      setGenres(
         res.map((genres, index) => ({
           id: genres.id,
           watched: false,
@@ -27,11 +27,11 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    getGenres("ru");
+    getGenres("en");
   }, []);
 
   useEffect(() => {
-    langFlag === "ru" ? getGenres("ru") : getGenres("en");
+    getGenres(langFlag);
   }, [langFlag]);
 
   const changeLanguage = (lang: string): void => {
@@ -41,7 +41,7 @@ const MainPage = () => {
 
   const handleCheck = (index: number): void => {
     genres[index].watched = !genres[index].watched;
-    setgenres([...genres]);
+    setGenres([...genres]);
   };
 
   localStorage.setItem("genres", JSON.stringify(genres));

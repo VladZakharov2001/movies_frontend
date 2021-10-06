@@ -36,11 +36,11 @@ const AddFilm = () => {
   }, [genres]);
 
   useEffect(() => {
-    getGenres("ru");
+    getGenres("en");
   }, []);
 
   useEffect(() => {
-    langFlag === "ru" ? getGenres("ru") : getGenres("en");
+    getGenres(langFlag);
   }, [langFlag]);
 
   const changeLanguage = (lang: string): void => {

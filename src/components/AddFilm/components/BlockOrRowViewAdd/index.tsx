@@ -3,10 +3,15 @@ import axios from "axios";
 import { FC } from "react";
 import { useState } from "react";
 import { ViewFilms } from "../../styled";
-import { URL_POSTERS } from "../../constants";
+import {
+  URL_POSTERS,
+  DEFAULT_YEAR,
+  DEFAULT_PAGE,
+} from "../../../../GlobalConstants";
 import { useTranslation } from "react-i18next";
 import { GetDataMovies } from "../../../../services/GetData";
 import { Button } from "@material-ui/core";
+
 interface IProps {
   genresId: Array<number>;
   langFlag: string;
@@ -17,14 +22,16 @@ const BlockOrRowViewAdd: FC<IProps> = ({ genresId, langFlag }): JSX.Element => {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    GetDataMovies(2021, langFlag, 1, genresId).then((res) => {
-      setFilms(
-        res.map((film: Object) => ({
-          ...film,
-          check: false,
-        }))
-      );
-    });
+    GetDataMovies(DEFAULT_YEAR, langFlag, DEFAULT_PAGE, genresId).then(
+      (res) => {
+        setFilms(
+          res.map((film: Object) => ({
+            ...film,
+            check: false,
+          }))
+        );
+      }
+    );
   }, [genresId]);
 
   return (
