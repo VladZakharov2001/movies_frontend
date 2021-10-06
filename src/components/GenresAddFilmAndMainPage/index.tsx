@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Button } from "@material-ui/core";
 import { GetDataGenres } from "../../services/GetData";
 import { useTranslation } from "react-i18next";
-import BlockOrRowViewAdd from "./components/BlockOrRowViewAdd";
+import PrivateRoute from "../../PrivateRoute";
+import MainPage from "./components/MainPages/index";
+import AddFilm from "./components/AddFilm/index";
 
-const AddFilm = () => {
+export const GenresAddFilmAndMainPage = () => {
   const { t, i18n } = useTranslation();
   const [langFlag, setLangFlag] = useState<string>("en");
   const [genresId, setGenresId] = useState<number[]>([]);
@@ -75,9 +77,12 @@ const AddFilm = () => {
             {genres.name}
           </Button>
         ))}
-      <div> {t("addFilmPage.chooseYD")}</div>
-      <BlockOrRowViewAdd genresId={genresId} langFlag={langFlag} />
+      <PrivateRoute exact path="/">
+        <MainPage genresId={genresId} langFlag={langFlag} />
+      </PrivateRoute>
+      <PrivateRoute exact path="/add">
+        <AddFilm genresId={genresId} langFlag={langFlag} />
+      </PrivateRoute>
     </div>
   );
 };
-export default AddFilm;

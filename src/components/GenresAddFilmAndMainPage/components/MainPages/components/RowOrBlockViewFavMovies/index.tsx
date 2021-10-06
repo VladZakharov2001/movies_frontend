@@ -3,18 +3,31 @@ import { useState } from "react";
 import { ViewFilms } from "../../../AddFilm/styled";
 import checkMark from "./chekMark.svg";
 import crossMark from "./crossMark.svg";
-import { URL_POSTERS } from "../../../../GlobalConstants";
+import {
+  URL_POSTERS,
+  DEFAULT_PAGE,
+  DEFAULT_YEAR,
+} from "../../../../../../GlobalConstants";
 import CheckingFilm from "./components/CheckingFilm";
 import { useTranslation } from "react-i18next";
-import { GetDataMovies } from "../../../../services/GetData";
+import { GetDataMovies } from "../../../../../../services/GetData";
+import { FC } from "react";
 
-const RowOrBlockViewFavMovies = (): JSX.Element => {
+interface IProps {
+  langFlag: string;
+  genresId: Array<number>;
+}
+
+const RowOrBlockViewFavMovies: FC<IProps> = ({
+  genresId,
+  langFlag,
+}): JSX.Element => {
   const [films, setFilms] = useState<any[]>([]);
   const [checked, setChecked] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    GetDataMovies(2021, "en", 1, [99]).then((res) => {
+    GetDataMovies(2021, langFlag, 1, genresId).then((res) => {
       setFilms(
         res.map((film: Object) => ({
           ...film,

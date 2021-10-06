@@ -7,9 +7,9 @@ import {
   URL_POSTERS,
   DEFAULT_YEAR,
   DEFAULT_PAGE,
-} from "../../../../GlobalConstants";
+} from "../../../../../../GlobalConstants";
 import { useTranslation } from "react-i18next";
-import { GetDataMovies } from "../../../../services/GetData";
+import { GetDataMovies } from "../../../../../../services/GetData";
 import { Button } from "@material-ui/core";
 
 interface IProps {
