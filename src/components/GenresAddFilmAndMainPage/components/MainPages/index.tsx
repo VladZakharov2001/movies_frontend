@@ -23,7 +23,11 @@ const MainPage: FC<IProps> = ({ genresId, langFlag }): JSX.Element => {
       </NavLink>
       <View viewB={view} onClick={() => setView(false)} symbolView={"Б"} />
       <View viewB={!view} onClick={() => setView(true)} symbolView={"С"} />
-      {view ? <RowOrBlockViewFavMovies genresId={genresId} langFlag={langFlag}/> : <div>Блочный</div>}
+      {view ? (
+        <RowOrBlockViewFavMovies genresId={genresId} langFlag={langFlag} />
+      ) : (
+        <div>Блочный</div>
+      )}
     </div>
   );
 };

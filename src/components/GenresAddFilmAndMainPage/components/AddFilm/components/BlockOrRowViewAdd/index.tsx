@@ -34,6 +34,8 @@ const BlockOrRowViewAdd: FC<IProps> = ({ genresId, langFlag }): JSX.Element => {
     );
   }, [genresId]);
 
+  localStorage.setItem("films", JSON.stringify(films));
+
   return (
     <div>
       {films.map((film, index) => {
