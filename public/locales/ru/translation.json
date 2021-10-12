@@ -5,5 +5,20 @@
         "logIn": "Войти",
         "incorrectData": "Неверный логин или пароль",
         "emptyFiled": "Пустое поле"
-    }   
+    },
+    "mainPage":{
+        "selectYouFavGenres": "Выберете ваши любимые жанры фильмов"
+    },
+    "addFilmPage":{
+        "popularity" : "Популярность ",
+        "releaseDate" : "Дата релиза ",
+        "save" : "Добавить в избранное",
+        "chooseYD" : "Выберете вашу судьбу",
+        "youFavMovies":"Ваши избранные фильмы",
+        "add" : "Добавить фильм"
+    },
+    "SessionCheck":{
+        "hello" : "Привет",
+        "logout": "Выйти"
+    }
 }
