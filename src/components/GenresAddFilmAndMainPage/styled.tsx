@@ -22,7 +22,7 @@ export const SmallConteiner = styled.div`
 `;
 export const CheckAndCross = styled.div`
   img {
-    height: 20px;
+    height: 1000px;
   }
 `;
 export const ViewFilms = styled.div<IProps>`
@@ -30,7 +30,7 @@ export const ViewFilms = styled.div<IProps>`
   flex-direction: ${(props) => (props.viewPage ? "row" : "column")};
   border: 3px solid green;
   height: ${(props) => (props.viewPage ? "100px" : "350px")};
-  width: ${(props) => (props.viewPage ? "100%" : "350px")};
+  width: ${(props) => (props.viewPage ? "100%" : "450px")};
   img {
     height: ${(props) => (props.viewPage ? "94px" : "")};
   }

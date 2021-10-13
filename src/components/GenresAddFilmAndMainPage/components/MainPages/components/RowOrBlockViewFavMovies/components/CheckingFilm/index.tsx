@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { CheckFilm } from "../../styled";
+import { CheckFilm } from "../../../../../../styled";
 interface IProps {
   checkingMark: boolean;
   title: string;

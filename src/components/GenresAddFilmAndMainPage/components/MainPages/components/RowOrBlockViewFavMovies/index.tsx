@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { ViewFilms } from "../../../AddFilm/styled";
 import checkMark from "./chekMark.svg";
 import crossMark from "./crossMark.svg";
 import {
@@ -12,15 +11,22 @@ import CheckingFilm from "./components/CheckingFilm";
 import { useTranslation } from "react-i18next";
 import { GetDataMovies } from "../../../../../../services/GetData";
 import { FC } from "react";
-import { SmallConteiner, CheckAndCross, FlexItems } from "../../../../styled";
+import {
+  SmallConteiner,
+  CheckAndCross,
+  FlexItems,
+  ViewFilms,
+} from "../../../../styled";
 interface IProps {
   langFlag: string;
   genresId: Array<number>;
+  view: boolean;
 }
 
 const RowOrBlockViewFavMovies: FC<IProps> = ({
   genresId,
   langFlag,
+  view,
 }): JSX.Element => {
   const [films, setFilms] = useState<any[]>([]);
   const [checked, setChecked] = useState<boolean>(false);
@@ -50,68 +56,34 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
   return (
     <div>
       <h4> {t("addFilmPage.youFavMovies")} </h4>
-      {films.map((film, index) => {
-        return (
-          // <div>
-          //   <span>
-          //     <ViewFilms>
-          //       <p>{index}</p>
-          //       <CheckingFilm
-          //         checkingMark={films[index].check}
-          //         title={film.original_title}
-          //       />
-          //       <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-          //       <p>
-          //         {t("addFilmPage.popularity")} {film.popularity}
-          //       </p>
-          //       <p>
-          //         {t("addFilmPage.releaseDate")} {film.release_date}
-          //       </p>
-          //       <div>
-          //         <img src={checkMark} onClick={() => handleView(index)} />
-          //         <img src={crossMark} onClick={() => deleteView(index)} />
-          //       </div>
-          //     </ViewFilms>
-          //   </span>
-          // </div>
-          <FlexItems viewPage={view}>
-            {films
-              .filter((film) => film.check === true)
-              .map((film, index) => {
-                return (
-                  <div>
-                    <ViewFilms viewPage={view}>
-                      <SmallConteiner>{index}</SmallConteiner>
-                      <CheckingFilm
-                        checkingMark={films[index].checked}
-                        title={film.original_title}
-                      />
-                      <SmallConteiner>
-                        <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-                      </SmallConteiner>
-                      <SmallConteiner>
-                        {t("addFilmPage.popularity")} {film.popularity}
-                      </SmallConteiner>
-                      <SmallConteiner>
-                        {t("addFilmPage.releaseDate")} {film.release_date}
-                      </SmallConteiner>
-                      <CheckAndCross>
-                        <img
-                          src={checkMark}
-                          onClick={() => handleView(index)}
-                        />
-                        <img
-                          src={crossMark}
-                          onClick={() => deleteView(index)}
-                        />
-                      </CheckAndCross>
-                    </ViewFilms>
-                  </div>
-                );
-              })}
-          </FlexItems>
-        );
-      })}
+      <FlexItems viewPage={view}>
+        {films.map((film, index) => {
+          return (
+            <div>
+              <ViewFilms viewPage={view}>
+                <SmallConteiner>{index}</SmallConteiner>
+                <CheckingFilm
+                  checkingMark={films[index].checked}
+                  title={film.original_title}
+                />
+                <SmallConteiner>
+                  <img src={`${URL_POSTERS}${film.backdrop_path}`} />
+                </SmallConteiner>
+                <SmallConteiner>
+                  {t("addFilmPage.popularity")} {film.popularity}
+                </SmallConteiner>
+                <SmallConteiner>
+                  {t("addFilmPage.releaseDate")} {film.release_date}
+                </SmallConteiner>
+                <SmallConteiner>
+                  <img src={checkMark} onClick={() => handleView(index)} />
+                  <img src={crossMark} onClick={() => deleteView(index)} />
+                </SmallConteiner>
+              </ViewFilms>
+            </div>
+          );
+        })}
+      </FlexItems>
     </div>
   );
 };
