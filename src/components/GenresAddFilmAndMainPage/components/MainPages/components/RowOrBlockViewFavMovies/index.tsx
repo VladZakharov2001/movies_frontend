@@ -12,10 +12,10 @@ import { useTranslation } from "react-i18next";
 import { GetDataMovies } from "../../../../../../services/GetData";
 import { FC } from "react";
 import {
-  SmallConteiner,
-  CheckAndCross,
-  FlexItems,
-  ViewFilms,
+  StyledFIlmItemElement,
+  CheckAndCrossImg,
+  StyledLocationFromViews,
+  StyledFIlmItem,
 } from "../../../../styled";
 interface IProps {
   langFlag: string;
@@ -56,34 +56,34 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
   return (
     <div>
       <h4> {t("addFilmPage.youFavMovies")} </h4>
-      <FlexItems viewPage={view}>
+      <StyledLocationFromViews viewPage={view}>
         {films.map((film, index) => {
           return (
             <div>
-              <ViewFilms viewPage={view}>
-                <SmallConteiner>{index}</SmallConteiner>
+              <StyledFIlmItem viewPage={view}>
+                <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
                 <CheckingFilm
-                  checkingMark={films[index].checked}
+                  checkingMark={films[index].check}
                   title={film.original_title}
                 />
-                <SmallConteiner>
+                <StyledFIlmItemElement>
                   <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-                </SmallConteiner>
-                <SmallConteiner>
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
                   {t("addFilmPage.popularity")} {film.popularity}
-                </SmallConteiner>
-                <SmallConteiner>
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
                   {t("addFilmPage.releaseDate")} {film.release_date}
-                </SmallConteiner>
-                <SmallConteiner>
+                </StyledFIlmItemElement>
+                <CheckAndCrossImg>
                   <img src={checkMark} onClick={() => handleView(index)} />
                   <img src={crossMark} onClick={() => deleteView(index)} />
-                </SmallConteiner>
-              </ViewFilms>
+                </CheckAndCrossImg>
+              </StyledFIlmItem>
             </div>
           );
         })}
-      </FlexItems>
+      </StyledLocationFromViews>
     </div>
   );
 };
