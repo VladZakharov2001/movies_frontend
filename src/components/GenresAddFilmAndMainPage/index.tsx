@@ -72,7 +72,7 @@ export const GenresAddFilmAndMainPage = () => {
             onClick={() => {
               handleCheck(index);
             }}
-            color={genres.watched ? "primary" : "success"}
+            color={genres.watched ? "primary" : "secondary"}
           >
             {genres.name}
           </Button>
