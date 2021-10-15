@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { ViewFilms } from "../../../AddFilm/styled";
 import checkMark from "./chekMark.svg";
 import crossMark from "./crossMark.svg";
 import {
@@ -12,15 +11,22 @@ import CheckingFilm from "./components/CheckingFilm";
 import { useTranslation } from "react-i18next";
 import { GetDataMovies } from "../../../../../../services/GetData";
 import { FC } from "react";
-
+import {
+  StyledFIlmItemElement,
+  CheckAndCrossImg,
+  StyledLocationFromViews,
+  StyledFIlmItem,
+} from "../../../../styled";
 interface IProps {
   langFlag: string;
   genresId: Array<number>;
+  view: boolean;
 }
 
 const RowOrBlockViewFavMovies: FC<IProps> = ({
   genresId,
   langFlag,
+  view,
 }): JSX.Element => {
   const [films, setFilms] = useState<any[]>([]);
   const [checked, setChecked] = useState<boolean>(false);
@@ -50,32 +56,34 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
   return (
     <div>
       <h4> {t("addFilmPage.youFavMovies")} </h4>
-      {films.map((film, index) => {
-        return (
-          <div>
-            <span>
-              <ViewFilms>
-                <p>{index}</p>
+      <StyledLocationFromViews viewPage={view}>
+        {films.map((film, index) => {
+          return (
+            <div>
+              <StyledFIlmItem viewPage={view}>
+                <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
                 <CheckingFilm
                   checkingMark={films[index].check}
                   title={film.original_title}
                 />
-                <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-                <p>
+                <StyledFIlmItemElement>
+                  <img src={`${URL_POSTERS}${film.backdrop_path}`} />
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
                   {t("addFilmPage.popularity")} {film.popularity}
-                </p>
-                <p>
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
                   {t("addFilmPage.releaseDate")} {film.release_date}
-                </p>
-                <div>
+                </StyledFIlmItemElement>
+                <CheckAndCrossImg>
                   <img src={checkMark} onClick={() => handleView(index)} />
                   <img src={crossMark} onClick={() => deleteView(index)} />
-                </div>
-              </ViewFilms>
-            </span>
-          </div>
-        );
-      })}
+                </CheckAndCrossImg>
+              </StyledFIlmItem>
+            </div>
+          );
+        })}
+      </StyledLocationFromViews>
     </div>
   );
 };

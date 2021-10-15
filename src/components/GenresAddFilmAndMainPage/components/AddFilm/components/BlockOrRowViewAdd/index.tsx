@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { FC } from "react";
 import { useState } from "react";
-import { ViewFilms } from "../../styled";
 import {
   URL_POSTERS,
   DEFAULT_YEAR,
@@ -42,20 +41,18 @@ const BlockOrRowViewAdd: FC<IProps> = ({ genresId, langFlag }): JSX.Element => {
         return (
           <div>
             <span>
-              <ViewFilms>
-                <p>{index}</p>
-                <p>{film.title}</p>
-                <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-                <p>
-                  {t("addFilmPage.popularity")} {film.popularity}
-                </p>
-                <p>
-                  {t("addFilmPage.releaseDate")} {film.release_date}
-                </p>
-                <div>
-                  <Button>{t("addFilmPage.save")}</Button>
-                </div>
-              </ViewFilms>
+              <p>{index}</p>
+              <p>{film.title}</p>
+              <img src={`${URL_POSTERS}${film.backdrop_path}`} />
+              <p>
+                {t("addFilmPage.popularity")} {film.popularity}
+              </p>
+              <p>
+                {t("addFilmPage.releaseDate")} {film.release_date}
+              </p>
+              <div>
+                <Button>{t("addFilmPage.save")}</Button>
+              </div>
             </span>
           </div>
         );
