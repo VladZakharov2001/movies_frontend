@@ -29,7 +29,7 @@ const BlockOrRowViewAdd: FC<IProps> = ({
   currentDate,
   view,
 }): JSX.Element => {
-  const [films, setFilms] = useState<any[]>([]);
+  const [films, setFilms] = useState<any[]>(JSON.parse(localStorage["films"]));
   const [checked, setChecked] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
 
