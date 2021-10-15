@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ChangeView } from "./styled";
+import { ChangeView } from "../View/styled";
 
 interface IProps {
   viewB: boolean;

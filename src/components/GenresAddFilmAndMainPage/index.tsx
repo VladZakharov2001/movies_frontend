@@ -6,13 +6,13 @@ import { useTranslation } from "react-i18next";
 import PrivateRoute from "../../PrivateRoute";
 import MainPage from "./components/MainPages/index";
 import AddFilm from "./components/AddFilm/index";
-
+import View from "../GenresAddFilmAndMainPage/components/View/index";
 export const GenresAddFilmAndMainPage = () => {
   const { t, i18n } = useTranslation();
   const [langFlag, setLangFlag] = useState<string>("en");
   const [genresId, setGenresId] = useState<number[]>([]);
   const [genres, setGenres] = useState<any[]>([]);
-
+  const [view, setView] = useState<boolean>(false);
   const getGenres = (lang: string): void => {
     GetDataGenres(lang).then((res) => {
       setGenres(
@@ -65,6 +65,8 @@ export const GenresAddFilmAndMainPage = () => {
       <Button variant="outlined" onClick={() => changeLanguage("en")}>
         en
       </Button>
+      <View viewB={view} onClick={() => setView(false)} symbolView={"Б"} />
+      <View viewB={!view} onClick={() => setView(true)} symbolView={"С"} />
       {genres &&
         genres.map((genres, index) => (
           <Button
@@ -78,10 +80,10 @@ export const GenresAddFilmAndMainPage = () => {
           </Button>
         ))}
       <PrivateRoute exact path="/">
-        <MainPage genresId={genresId} langFlag={langFlag} />
+        <MainPage genresId={genresId} langFlag={langFlag} view={view} />
       </PrivateRoute>
       <PrivateRoute exact path="/add">
-        <AddFilm genresId={genresId} langFlag={langFlag} />
+        <AddFilm genresId={genresId} langFlag={langFlag} view={view} />
       </PrivateRoute>
     </div>
   );

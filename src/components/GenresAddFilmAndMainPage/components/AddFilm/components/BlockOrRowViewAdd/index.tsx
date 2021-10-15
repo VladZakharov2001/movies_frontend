@@ -10,53 +10,84 @@ import {
 import { useTranslation } from "react-i18next";
 import { GetDataMovies } from "../../../../../../services/GetData";
 import { Button } from "@material-ui/core";
-
+import {
+  StyledLocationFromViews,
+  StyledFIlmItem,
+  StyledFIlmItemElement,
+} from "../../../../../../components/GenresAddFilmAndMainPage/styled";
 interface IProps {
   genresId: Array<number>;
   langFlag: string;
+  range: string;
+  currentDate: string;
+  view: boolean;
 }
-const BlockOrRowViewAdd: FC<IProps> = ({ genresId, langFlag }): JSX.Element => {
+const BlockOrRowViewAdd: FC<IProps> = ({
+  genresId,
+  langFlag,
+  range,
+  currentDate,
+  view,
+}): JSX.Element => {
   const [films, setFilms] = useState<any[]>([]);
   const [checked, setChecked] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    GetDataMovies(DEFAULT_YEAR, langFlag, DEFAULT_PAGE, genresId).then(
-      (res) => {
-        setFilms(
-          res.map((film: Object) => ({
-            ...film,
-            check: false,
-          }))
-        );
-      }
-    );
-  }, [genresId]);
+    GetDataMovies(
+      Number(currentDate),
+      langFlag,
+      DEFAULT_PAGE,
+      genresId,
+      Number(range)
+    ).then((res) => {
+      setFilms(
+        res.map((film: Object) => ({
+          ...film,
+          check: false,
+        }))
+      );
+    });
+  }, [genresId, currentDate, range]);
+
+  const saveFilm = (index: number): void => {
+    films[index].check = !films[index].check;
+    setFilms([...films]);
+  };
 
   localStorage.setItem("films", JSON.stringify(films));
 
   return (
     <div>
-      {films.map((film, index) => {
-        return (
-          <div>
-            <span>
-              <p>{index}</p>
-              <p>{film.title}</p>
-              <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-              <p>
-                {t("addFilmPage.popularity")} {film.popularity}
-              </p>
-              <p>
-                {t("addFilmPage.releaseDate")} {film.release_date}
-              </p>
-              <div>
-                <Button>{t("addFilmPage.save")}</Button>
-              </div>
-            </span>
-          </div>
-        );
-      })}
+      <StyledLocationFromViews viewPage={view}>
+        {films.map((film, index) => {
+          return (
+            <div>
+              <StyledFIlmItem viewPage={view}>
+                <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
+                <StyledFIlmItemElement>{film.title}</StyledFIlmItemElement>
+                <StyledFIlmItemElement>
+                  <img src={`${URL_POSTERS}${film.backdrop_path}`} />
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
+                  {t("addFilmPage.popularity")} {film.popularity}
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
+                  {t("addFilmPage.releaseDate")} {film.release_date}
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
+                  <Button
+                    color={film.check ? "primary" : "secondary"}
+                    onClick={() => saveFilm(index)}
+                  >
+                    {t("addFilmPage.save")}
+                  </Button>
+                </StyledFIlmItemElement>
+              </StyledFIlmItem>
+            </div>
+          );
+        })}
+      </StyledLocationFromViews>
     </div>
   );
 };
