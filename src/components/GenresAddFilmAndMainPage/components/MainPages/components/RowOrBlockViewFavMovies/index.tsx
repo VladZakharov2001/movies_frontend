@@ -29,12 +29,11 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
   view,
 }): JSX.Element => {
   const [films, setFilms] = useState<any[]>([]);
-  const [checkedMark, setcheckedMark] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
     setFilms(
-      JSON.parse(localStorage["films"] || null).map((film: Object) => ({
+      JSON.parse(localStorage["films"] || []).map((film: Object) => ({
         ...film,
         checkedMark: false,
       }))
@@ -47,54 +46,53 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
   };
 
   const deleteView = (index: number, idfilm: number): void => {
-    for (let i = 0; i < films.length; i++) {
-      if (films[i].id == idfilm) {
-        films[i].check = !films[i].check;
+    films.forEach((film) => {
+      if (film.id == idfilm) {
+        film.disable = false;
       }
-      setFilms([...films]);
-    }
+    });
+    setFilms([...films]);
   };
+
   if (films.length != 0) localStorage.setItem("films", JSON.stringify(films));
 
   return (
     <div>
       <h4> {t("addFilmPage.youFavMovies")} </h4>
       <StyledLocationFromViews viewPage={view}>
-        {films.filter((film) => film.check === true).length == 0 && (
-          <div>Фильмов нет</div>
-        )}
-        {films
-          .filter((film) => film.check === true)
-          .map((film, index) => {
-            return (
-              <div>
-                <StyledFIlmItem viewPage={view}>
-                  <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
-                  <CheckingFilm
-                    checkingMark={films[index].checkedMark}
-                    title={film.original_title}
-                  />
-                  <StyledFIlmItemElement>
-                    <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-                  </StyledFIlmItemElement>
-                  <StyledFIlmItemElement>
-                    {t("addFilmPage.popularity")} {film.popularity}
-                  </StyledFIlmItemElement>
-                  <StyledFIlmItemElement>
-                    {t("addFilmPage.releaseDate")} {film.release_date}
-                  </StyledFIlmItemElement>
-                  <StyledFIlmItemElement>{film.id}</StyledFIlmItemElement>
-                  <CheckAndCrossImg>
-                    <img src={checkMark} onClick={() => handleView(index)} />
-                    <img
-                      src={crossMark}
-                      onClick={() => deleteView(index, film.id)}
+        {films &&
+          films
+            .filter((film) => film.disable)
+            .map((film, index) => {
+              return (
+                <div>
+                  <StyledFIlmItem viewPage={view}>
+                    <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
+                    <CheckingFilm
+                      checkingMark={films[index].checkedMark}
+                      title={film.original_title}
                     />
-                  </CheckAndCrossImg>
-                </StyledFIlmItem>
-              </div>
-            );
-          })}
+                    <StyledFIlmItemElement>
+                      <img src={`${URL_POSTERS}${film.backdrop_path}`} />
+                    </StyledFIlmItemElement>
+                    <StyledFIlmItemElement>
+                      {t("addFilmPage.popularity")} {film.popularity}
+                    </StyledFIlmItemElement>
+                    <StyledFIlmItemElement>
+                      {t("addFilmPage.releaseDate")} {film.release_date}
+                    </StyledFIlmItemElement>
+                    <StyledFIlmItemElement>{film.id}</StyledFIlmItemElement>
+                    <CheckAndCrossImg>
+                      <img src={checkMark} onClick={() => handleView(index)} />
+                      <img
+                        src={crossMark}
+                        onClick={() => deleteView(index, film.id)}
+                      />
+                    </CheckAndCrossImg>
+                  </StyledFIlmItem>
+                </div>
+              );
+            })}
       </StyledLocationFromViews>
     </div>
   );

@@ -13,7 +13,6 @@ interface IProps {
   view: boolean;
 }
 const MainPage: FC<IProps> = ({ genresId, langFlag, view }): JSX.Element => {
-  // const [view, setView] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
   return (
     <div>

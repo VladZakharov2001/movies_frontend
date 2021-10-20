@@ -29,7 +29,7 @@ export const GenresAddFilmAndMainPage = () => {
     setGenresId(
       genres
         .filter((w, index) => {
-          return genres[index].watched === true;
+          return genres[index].watched;
         })
         .map((genreInfo) => {
           return genreInfo.id;
@@ -56,6 +56,11 @@ export const GenresAddFilmAndMainPage = () => {
   };
 
   localStorage.setItem("genres", JSON.stringify(genres));
+
+  if (JSON.parse(localStorage["films"]) === undefined)
+    localStorage.setItem("films", JSON.stringify([]));
+  if (JSON.parse(localStorage["saveFilmsAdd"]) === undefined)
+    localStorage.setItem("saveFilmsAdd", JSON.stringify([]));
 
   return (
     <div>

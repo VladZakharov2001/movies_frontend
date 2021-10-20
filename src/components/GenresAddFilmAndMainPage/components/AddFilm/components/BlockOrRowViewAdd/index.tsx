@@ -29,8 +29,9 @@ const BlockOrRowViewAdd: FC<IProps> = ({
   currentDate,
   view,
 }): JSX.Element => {
-  const [films, setFilms] = useState<any[]>(JSON.parse(localStorage["films"]));
-  const [checked, setChecked] = useState<boolean>(false);
+  const [films, setFilms] = useState<any[]>(
+    JSON.parse(localStorage["films"]) || []
+  );
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -41,52 +42,82 @@ const BlockOrRowViewAdd: FC<IProps> = ({
       genresId,
       Number(range)
     ).then((res) => {
+      if (JSON.parse(localStorage["films"]).length === 0) {
+        localStorage.setItem("films", JSON.stringify(res));
+      }
+
+      let array: Array<Object> = JSON.parse(localStorage["saveFilmsAdd"])
+        .map((savedFilm: any) => {
+          return savedFilm.id;
+        })
+        .concat();
+
       setFilms(
-        res.map((film: Object) => ({
-          ...film,
-          check: false,
-        }))
+        res.map((film: any) => {
+          if (array.includes(film.id)) {
+            film.disable = true;
+          }
+          return film;
+        })
       );
     });
-  }, [genresId, currentDate, range]);
+  }, [currentDate, range, genresId]);
 
-  const saveFilm = (index: number): void => {
-    films[index].check = !films[index].check;
-    setFilms([...films]);
+  useEffect(() => {
+    localStorage.setItem(
+      "saveFilmsAdd",
+      JSON.stringify(
+        films.filter((film) => {
+          return film.disable;
+        })
+      )
+    );
+  }, [films]);
+
+  const saveFilm = (id: number): void => {
+    setFilms(
+      films.map((film) => {
+        if (film.id == id) {
+          film.disable = true;
+        }
+        return film;
+      })
+    );
+    localStorage.setItem("films", JSON.stringify(films));
   };
-
-  localStorage.setItem("films", JSON.stringify(films));
 
   return (
     <div>
       <StyledLocationFromViews viewPage={view}>
-        {films.map((film, index) => {
-          return (
-            <div>
-              <StyledFIlmItem viewPage={view}>
-                <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
-                <StyledFIlmItemElement>{film.title}</StyledFIlmItemElement>
-                <StyledFIlmItemElement>
-                  <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-                </StyledFIlmItemElement>
-                <StyledFIlmItemElement>
-                  {t("addFilmPage.popularity")} {film.popularity}
-                </StyledFIlmItemElement>
-                <StyledFIlmItemElement>
-                  {t("addFilmPage.releaseDate")} {film.release_date}
-                </StyledFIlmItemElement>
-                <StyledFIlmItemElement>
-                  <Button
-                    color={film.check ? "primary" : "secondary"}
-                    onClick={() => saveFilm(index)}
-                  >
-                    {t("addFilmPage.save")}
-                  </Button>
-                </StyledFIlmItemElement>
-              </StyledFIlmItem>
-            </div>
-          );
-        })}
+        {films &&
+          films.map((film, index) => {
+            return (
+              <div>
+                <StyledFIlmItem viewPage={view}>
+                  <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
+                  <StyledFIlmItemElement>{film.title}</StyledFIlmItemElement>
+                  <StyledFIlmItemElement>
+                    <img src={`${URL_POSTERS}${film.backdrop_path}`} />
+                  </StyledFIlmItemElement>
+                  <StyledFIlmItemElement>
+                    {t("addFilmPage.popularity")} {film.popularity}
+                  </StyledFIlmItemElement>
+                  <StyledFIlmItemElement>
+                    {t("addFilmPage.releaseDate")} {film.release_date}
+                  </StyledFIlmItemElement>
+                  <StyledFIlmItemElement>{film.id}</StyledFIlmItemElement>
+                  <StyledFIlmItemElement>
+                    <Button
+                      color={film.disable ? "primary" : "secondary"}
+                      onClick={() => saveFilm(film.id)}
+                    >
+                      {t("addFilmPage.save")}
+                    </Button>
+                  </StyledFIlmItemElement>
+                </StyledFIlmItem>
+              </div>
+            );
+          })}
       </StyledLocationFromViews>
     </div>
   );

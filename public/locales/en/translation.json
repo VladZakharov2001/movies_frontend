@@ -7,7 +7,9 @@
         "emptyFiled" : "Empty Filed"
     },
     "mainPage":{
-        "selectYouFavGenres": "Select you favorite genres"
+        "selectYouFavGenres": "Select you favorite genres",
+        "noFilm": "There are no movies on the page"
+        
     },
     "addFilmPage":{
         "popularity" : "Popularity",
