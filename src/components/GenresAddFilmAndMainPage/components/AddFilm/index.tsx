@@ -2,18 +2,14 @@ import BlockOrRowViewAdd from "./components/BlockOrRowViewAdd";
 import { useState, useEffect } from "react";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
+import { isValidFilerFilms } from "../../../../services/FillandisValidateData";
 interface IProps {
   genresId: Array<number>;
   langFlag: string;
   view: boolean;
 }
 const AddFilm: FC<IProps> = ({ genresId, langFlag, view }): JSX.Element => {
-  if (localStorage["currentDate"] === undefined) {
-    localStorage.setItem("currentDate", JSON.stringify("2021"));
-  }
-
-  if (localStorage["range"] === undefined)
-    localStorage.setItem("range", JSON.stringify("50"));
+  isValidFilerFilms();
 
   const [date, setDate] = useState<number[]>([]);
   const [currentDate, setCurrentDate] = useState<string>(

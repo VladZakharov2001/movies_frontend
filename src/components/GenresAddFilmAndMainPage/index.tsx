@@ -7,6 +7,7 @@ import PrivateRoute from "../../PrivateRoute";
 import MainPage from "./components/MainPages/index";
 import AddFilm from "./components/AddFilm/index";
 import View from "../GenresAddFilmAndMainPage/components/View/index";
+import { isValidFilmsIdAndFilms } from "../../services/FillandisValidateData";
 export const GenresAddFilmAndMainPage = () => {
   const { t, i18n } = useTranslation();
   const [langFlag, setLangFlag] = useState<string>("en");
@@ -24,6 +25,8 @@ export const GenresAddFilmAndMainPage = () => {
       );
     });
   };
+
+  isValidFilmsIdAndFilms();
 
   useEffect(() => {
     setGenresId(
@@ -56,11 +59,6 @@ export const GenresAddFilmAndMainPage = () => {
   };
 
   localStorage.setItem("genres", JSON.stringify(genres));
-
-  if (JSON.parse(localStorage["films"]) === undefined)
-    localStorage.setItem("films", JSON.stringify([]));
-  if (JSON.parse(localStorage["saveFilmsAdd"]) === undefined)
-    localStorage.setItem("saveFilmsAdd", JSON.stringify([]));
 
   return (
     <div>

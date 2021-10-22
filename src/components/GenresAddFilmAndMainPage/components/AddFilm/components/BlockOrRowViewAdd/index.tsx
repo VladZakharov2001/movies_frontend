@@ -8,7 +8,10 @@ import {
   DEFAULT_PAGE,
 } from "../../../../../../GlobalConstants";
 import { useTranslation } from "react-i18next";
-import { GetDataMovies } from "../../../../../../services/GetData";
+import {
+  GetDataMovies,
+  GetInfoFilmById,
+} from "../../../../../../services/GetData";
 import { Button } from "@material-ui/core";
 import {
   StyledLocationFromViews,
@@ -22,6 +25,7 @@ interface IProps {
   currentDate: string;
   view: boolean;
 }
+
 const BlockOrRowViewAdd: FC<IProps> = ({
   genresId,
   langFlag,
@@ -29,8 +33,10 @@ const BlockOrRowViewAdd: FC<IProps> = ({
   currentDate,
   view,
 }): JSX.Element => {
-  const [films, setFilms] = useState<any[]>(
-    JSON.parse(localStorage["films"]) || []
+  const [films, setFilms] = useState<any[]>(JSON.parse(localStorage["films"]));
+
+  const [filmsId, setFilmsId] = useState<number[]>(
+    JSON.parse(localStorage["filmsId"])
   );
   const { t, i18n } = useTranslation();
 
@@ -42,48 +48,14 @@ const BlockOrRowViewAdd: FC<IProps> = ({
       genresId,
       Number(range)
     ).then((res) => {
-      if (JSON.parse(localStorage["films"]).length === 0) {
-        localStorage.setItem("films", JSON.stringify(res));
-      }
-
-      let array: Array<Object> = JSON.parse(localStorage["saveFilmsAdd"])
-        .map((savedFilm: any) => {
-          return savedFilm.id;
-        })
-        .concat();
-
-      setFilms(
-        res.map((film: any) => {
-          if (array.includes(film.id)) {
-            film.disable = true;
-          }
-          return film;
-        })
-      );
+      setFilms(res);
     });
   }, [currentDate, range, genresId]);
 
-  useEffect(() => {
-    localStorage.setItem(
-      "saveFilmsAdd",
-      JSON.stringify(
-        films.filter((film) => {
-          return film.disable;
-        })
-      )
-    );
-  }, [films]);
+  localStorage.setItem("filmsId", JSON.stringify(filmsId));
 
   const saveFilm = (id: number): void => {
-    setFilms(
-      films.map((film) => {
-        if (film.id == id) {
-          film.disable = true;
-        }
-        return film;
-      })
-    );
-    localStorage.setItem("films", JSON.stringify(films));
+    setFilmsId([...filmsId, id]);
   };
 
   return (
@@ -108,7 +80,9 @@ const BlockOrRowViewAdd: FC<IProps> = ({
                   <StyledFIlmItemElement>{film.id}</StyledFIlmItemElement>
                   <StyledFIlmItemElement>
                     <Button
-                      color={film.disable ? "primary" : "secondary"}
+                      color={
+                        filmsId.includes(film.id) ? "primary" : "secondary"
+                      }
                       onClick={() => saveFilm(film.id)}
                     >
                       {t("addFilmPage.save")}

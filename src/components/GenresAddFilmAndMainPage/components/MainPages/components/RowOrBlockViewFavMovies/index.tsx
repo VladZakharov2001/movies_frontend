@@ -7,15 +7,18 @@ import {
   DEFAULT_PAGE,
   DEFAULT_YEAR,
 } from "../../../../../../GlobalConstants";
-import CheckingFilm from "./components/CheckingFilm";
 import { useTranslation } from "react-i18next";
-import { GetDataMovies } from "../../../../../../services/GetData";
+import {
+  GetDataMovies,
+  GetInfoFilmById,
+} from "../../../../../../services/GetData";
 import { FC } from "react";
 import {
   StyledFIlmItemElement,
   CheckAndCrossImg,
   StyledLocationFromViews,
   StyledFIlmItem,
+  CheckStyle,
 } from "../../../../styled";
 interface IProps {
   langFlag: string;
@@ -28,71 +31,65 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
   langFlag,
   view,
 }): JSX.Element => {
-  const [films, setFilms] = useState<any[]>([]);
   const { t, i18n } = useTranslation();
+  let [filmsI, setFilmsI] = useState<any[]>([]);
+  const [viewedFilmsId, setViewedFilmsId] = useState<number[]>([]);
+  const [filmsId, setFilmsId] = useState<number[]>(
+    JSON.parse(localStorage["filmsId"])
+  );
 
   useEffect(() => {
-    setFilms(
-      JSON.parse(localStorage["films"] || []).map((film: Object) => ({
-        ...film,
-        checkedMark: false,
-      }))
-    );
+    setFilmsI([]);
+    filmsId.map((ari) => {
+      GetInfoFilmById(ari).then((res) => {
+        setFilmsI((prev) => prev.concat({ ...res, ...{ viewedFilm: false } }));
+      });
+    });
   }, []);
 
   const handleView = (index: number): void => {
-    films[index].checkedMark = !films[index].checkedMark;
-    setFilms([...films]);
+    filmsI[index].viewedFilm = !filmsI[index].viewedFilm;
+    setFilmsI([...filmsI]);
   };
 
-  const deleteView = (index: number, idfilm: number): void => {
-    films.forEach((film) => {
-      if (film.id == idfilm) {
-        film.disable = false;
-      }
-    });
-    setFilms([...films]);
+  const deleteView = (idfilm: number): void => {
+    setFilmsI(filmsI.filter((film) => film.id !== idfilm));
   };
 
-  if (films.length != 0) localStorage.setItem("films", JSON.stringify(films));
+  useEffect(() => {
+    setFilmsId(filmsI.map((film) => film.id));
+  }, [filmsI]);
+
+  localStorage.setItem("filmsId", JSON.stringify(filmsId));
 
   return (
     <div>
       <h4> {t("addFilmPage.youFavMovies")} </h4>
       <StyledLocationFromViews viewPage={view}>
-        {films &&
-          films
-            .filter((film) => film.disable)
-            .map((film, index) => {
-              return (
-                <div>
-                  <StyledFIlmItem viewPage={view}>
-                    <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
-                    <CheckingFilm
-                      checkingMark={films[index].checkedMark}
-                      title={film.original_title}
-                    />
-                    <StyledFIlmItemElement>
-                      <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-                    </StyledFIlmItemElement>
-                    <StyledFIlmItemElement>
-                      {t("addFilmPage.popularity")} {film.popularity}
-                    </StyledFIlmItemElement>
-                    <StyledFIlmItemElement>
-                      {t("addFilmPage.releaseDate")} {film.release_date}
-                    </StyledFIlmItemElement>
-                    <StyledFIlmItemElement>{film.id}</StyledFIlmItemElement>
-                    <CheckAndCrossImg>
-                      <img src={checkMark} onClick={() => handleView(index)} />
-                      <img
-                        src={crossMark}
-                        onClick={() => deleteView(index, film.id)}
-                      />
-                    </CheckAndCrossImg>
-                  </StyledFIlmItem>
-                </div>
-              );
-            })}
+        {filmsI.map((film, index) => {
+          return (
+            <div>
+              <StyledFIlmItem viewPage={view}>
+                <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
+                <CheckStyle checked={film.viewedFilm}>{film.title}</CheckStyle>
+                <StyledFIlmItemElement>
+                  <img src={`${URL_POSTERS}${film.backdrop_path}`} />
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
+                  {t("addFilmPage.popularity")} {film.popularity}
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>
+                  {t("addFilmPage.releaseDate")} {film.release_date}
+                </StyledFIlmItemElement>
+                <StyledFIlmItemElement>{film.id}</StyledFIlmItemElement>
+                <CheckAndCrossImg>
+                  <img src={checkMark} onClick={() => handleView(index)} />
+                  <img src={crossMark} onClick={() => deleteView(film.id)} />
+                </CheckAndCrossImg>
+              </StyledFIlmItem>
+            </div>
+          );
+        })}
       </StyledLocationFromViews>
     </div>
   );
