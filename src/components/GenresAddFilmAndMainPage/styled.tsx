@@ -2,6 +2,9 @@ import styled from "styled-components";
 interface IProps {
   viewPage: boolean;
 }
+interface IpropsT {
+  checked: boolean;
+}
 export const StyledCheckFilm = styled.div<{ checkingMark: boolean }>`
   p {
     color: ${(props) => (props.checkingMark ? "grey" : "black")};
@@ -37,4 +40,8 @@ export const StyledFIlmItem = styled.div<IProps>`
     height: ${(props) => (props.viewPage ? "90px" : "")};
   }
   margin: 5px;
+`;
+
+export const CheckStyle = styled.div<IpropsT>`
+  color: ${(props) => (props.checked ? "blue" : "black")};
 `;

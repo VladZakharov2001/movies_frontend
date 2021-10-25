@@ -3,16 +3,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@material-ui/core";
 import RowOrBlockViewFavMovies from "./components/RowOrBlockViewFavMovies/index";
-import View from "./components/View/index";
+import View from "../View/index";
 import SessionCheck from "./components/SessionCheck/index";
 import { useTranslation } from "react-i18next";
 import { FC } from "react";
 interface IProps {
   genresId: Array<number>;
   langFlag: string;
+  view: boolean;
 }
-const MainPage: FC<IProps> = ({ genresId, langFlag }): JSX.Element => {
-  const [view, setView] = useState<boolean>(false);
+const MainPage: FC<IProps> = ({ genresId, langFlag, view }): JSX.Element => {
   const { t, i18n } = useTranslation();
   return (
     <div>
@@ -20,8 +20,6 @@ const MainPage: FC<IProps> = ({ genresId, langFlag }): JSX.Element => {
       <NavLink to="/add">
         <Button variant="outlined">{t("addFilmPage.add")}</Button>
       </NavLink>
-      <View viewB={view} onClick={() => setView(false)} symbolView={"Б"} />
-      <View viewB={!view} onClick={() => setView(true)} symbolView={"С"} />
       <RowOrBlockViewFavMovies
         genresId={genresId}
         langFlag={langFlag}

@@ -14,3 +14,8 @@ export const isValidUser = (login: string, password: string): Boolean => {
   if (usersString === null) return false;
   return password !== JSON.parse(usersString)[login];
 };
+
+export const isValidFilmsIdAndFilms = (): void => {
+  if (localStorage.getItem("filmsIds") === null)
+    localStorage.setItem("filmsIds", JSON.stringify([]));
+};

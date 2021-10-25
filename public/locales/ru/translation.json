@@ -7,7 +7,8 @@
         "emptyFiled": "Пустое поле"
     },
     "mainPage":{
-        "selectYouFavGenres": "Выберете ваши любимые жанры фильмов"
+        "selectYouFavGenres": "Выберете ваши любимые жанры фильмов",
+        "noFilm" : "Нет фильмов"
     },
     "addFilmPage":{
         "popularity" : "Популярность ",

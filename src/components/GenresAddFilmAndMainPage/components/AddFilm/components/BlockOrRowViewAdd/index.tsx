@@ -8,55 +8,86 @@ import {
   DEFAULT_PAGE,
 } from "../../../../../../GlobalConstants";
 import { useTranslation } from "react-i18next";
-import { GetDataMovies } from "../../../../../../services/GetData";
+import {
+  GetDataMovies,
+  GetInfoFilmById,
+} from "../../../../../../services/GetData";
 import { Button } from "@material-ui/core";
-
+import {
+  StyledLocationFromViews,
+  StyledFIlmItem,
+  StyledFIlmItemElement,
+} from "../../../../../../components/GenresAddFilmAndMainPage/styled";
 interface IProps {
   genresId: Array<number>;
   langFlag: string;
+  range: number;
+  currentDate: number;
+  view: boolean;
 }
-const BlockOrRowViewAdd: FC<IProps> = ({ genresId, langFlag }): JSX.Element => {
-  const [films, setFilms] = useState<any[]>([]);
-  const [checked, setChecked] = useState<boolean>(false);
+
+const BlockOrRowViewAdd: FC<IProps> = ({
+  genresId,
+  langFlag,
+  range,
+  currentDate,
+  view,
+}): JSX.Element => {
+  const [informationAboutFilms, setInformationAboutFilms] = useState<any[]>([]);
+  const [filmsIds, setfilmsIds] = useState<number[]>(
+    JSON.parse(localStorage["filmsIds"])
+  );
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    GetDataMovies(DEFAULT_YEAR, langFlag, DEFAULT_PAGE, genresId).then(
+    GetDataMovies(currentDate, langFlag, DEFAULT_PAGE, genresId, range).then(
       (res) => {
-        setFilms(
-          res.map((film: Object) => ({
-            ...film,
-            check: false,
-          }))
-        );
+        setInformationAboutFilms(res);
       }
     );
-  }, [genresId]);
+  }, [currentDate, range, genresId]);
 
-  localStorage.setItem("films", JSON.stringify(films));
+  const saveFilm = (id: number): void => {
+    let newfilmsIds = [...filmsIds, id];
+    setfilmsIds(newfilmsIds);
+    localStorage.setItem("filmsIds", JSON.stringify(newfilmsIds));
+  };
 
   return (
     <div>
-      {films.map((film, index) => {
-        return (
-          <div>
-            <span>
-              <p>{index}</p>
-              <p>{film.title}</p>
-              <img src={`${URL_POSTERS}${film.backdrop_path}`} />
-              <p>
-                {t("addFilmPage.popularity")} {film.popularity}
-              </p>
-              <p>
-                {t("addFilmPage.releaseDate")} {film.release_date}
-              </p>
+      <StyledLocationFromViews viewPage={view}>
+        {informationAboutFilms &&
+          informationAboutFilms.map((film, index) => {
+            return (
               <div>
-                <Button>{t("addFilmPage.save")}</Button>
+                <StyledFIlmItem viewPage={view}>
+                  <StyledFIlmItemElement>{index}</StyledFIlmItemElement>
+                  <StyledFIlmItemElement>{film.title}</StyledFIlmItemElement>
+                  <StyledFIlmItemElement>
+                    <img src={`${URL_POSTERS}${film.backdrop_path}`} />
+                  </StyledFIlmItemElement>
+                  <StyledFIlmItemElement>
+                    {t("addFilmPage.popularity")} {film.popularity}
+                  </StyledFIlmItemElement>
+                  <StyledFIlmItemElement>
+                    {t("addFilmPage.releaseDate")} {film.release_date}
+                  </StyledFIlmItemElement>
+                  <StyledFIlmItemElement>{film.id}</StyledFIlmItemElement>
+                  <StyledFIlmItemElement>
+                    <Button
+                      color={
+                        filmsIds.includes(film.id) ? "primary" : "secondary"
+                      }
+                      onClick={() => saveFilm(film.id)}
+                    >
+                      {t("addFilmPage.save")}
+                    </Button>
+                  </StyledFIlmItemElement>
+                </StyledFIlmItem>
               </div>
-            </span>
-          </div>
-        );
-      })}
+            );
+          })}
+      </StyledLocationFromViews>
     </div>
   );
 };

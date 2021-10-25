@@ -1,0 +1,487 @@
+*   [33mcommit c1783cd823f9f0aab6cd7806db7336bc1d258aca[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+[31m|[m[32m\[m  Merge: 6b462ac 61a8491
+[31m|[m [32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[31m|[m [32m|[m Date:   Fri Oct 15 11:15:52 2021 +0300
+[31m|[m [32m|[m 
+[31m|[m [32m|[m     Merge branch 'main' of github.com:VladZakharov2001/movies_frontend
+[31m|[m [32m|[m 
+[31m|[m * [33mcommit 61a84911b2c4fe0f896692217350cb9b15decaf4[m[33m ([m[1;31morigin/main[m[33m)[m
+[31m|[m [32m|[m Author: VladZakharov2001 <70758148+VladZakharov2001@users.noreply.github.com>
+[31m|[m [32m|[m Date:   Thu Oct 14 20:02:44 2021 +0300
+[31m|[m [32m|[m 
+[31m|[m [32m|[m     Blockview (#7)
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * create authorization
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * create login
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * home auth
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * correction PR
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * delete cl
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * fixed validation
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * fixed conditional, string
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * i18n
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * home
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * addFilm
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * home2
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * Create auth (#3)
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * create authorization
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * create login
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * home auth
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * correction PR
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * delete cl
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * fixed validation
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * fixed conditional, string
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * i18n
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     Co-authored-by: kodep <vladislav.zaharov@kodep.ru>
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * main page
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * delete console log
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * add .env
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * Getting Data Movies
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * fixed i18n and add services
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * fixed reques genres
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * delete console log
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * change defolt lang
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * taking genres up
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * add ls for film
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * create main styled
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * create logic styled
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * create styles for movie elements
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * pack-lock
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     * fix package-lock
+[31m|[m [32m|[m     
+[31m|[m [32m|[m     Co-authored-by: kodep <vladislav.zaharov@kodep.ru>
+[31m|[m [32m|[m     
+[31m|[m [32m|[m *   [33mcommit e8d05dcdaca014ef27af4c6ffbb302706810c38a[m[33m ([m[1;31morigin/blockview[m[33m, [m[1;32mblockview[m[33m, [m[1;32mbackup[m[33m)[m
+[31m|[m [32m|[m [33m|[m[31m\[m  Merge: 601fee3 6b462ac
+[31m|[m [32m|[m[31m_[m[33m|[m[31m/[m  Author: kodep <vladislav.zaharov@kodep.ru>
+[31m|[m[31m/[m[32m|[m [33m|[m   Date:   Thu Oct 14 17:33:56 2021 +0300
+[31m|[m [32m|[m [33m|[m   
+[31m|[m [32m|[m [33m|[m       Merge branch 'main' into blockview
+[31m|[m [32m|[m [33m|[m 
+* [32m|[m [33m|[m [33mcommit 6b462acae812f5ed93aaed3d2a537d43a8bfa537[m
+[35m|[m[32m\[m[32m|[m [33m|[m Merge: 90228b3 4cb6a73
+[35m|[m [32m|[m [33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[35m|[m [32m|[m [33m|[m Date:   Wed Oct 13 12:31:05 2021 +0300
+[35m|[m [32m|[m [33m|[m 
+[35m|[m [32m|[m [33m|[m     Merge branch 'main' of github.com:VladZakharov2001/movies_frontend
+[35m|[m [32m|[m [33m|[m 
+[35m|[m [32m|[m * [33mcommit 601fee3e5d35f3629dd58170e06319fec7c131ea[m[33m ([m[1;32msaveFavoriteFilm[m[33m)[m
+[35m|[m [32m|[m [36m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[35m|[m [32m|[m [36m|[m Date:   Thu Oct 14 15:47:02 2021 +0300
+[35m|[m [32m|[m [36m|[m 
+[35m|[m [32m|[m [36m|[m     fix package-lock
+[35m|[m [32m|[m [36m|[m 
+[35m|[m [32m|[m * [33mcommit 276e2fd1ba767fd9f957e8f43a90fb3f0bb9d2f1[m
+[35m|[m [32m|[m [36m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[35m|[m [32m|[m [36m|[m Date:   Thu Oct 14 16:51:05 2021 +0300
+[35m|[m [32m|[m [36m|[m 
+[35m|[m [32m|[m [36m|[m     pack-lock
+[35m|[m [32m|[m [36m|[m 
+[35m|[m [32m|[m * [33mcommit d57075c7852ae825160767698e6fc8db592cd99c[m[33m ([m[1;32msaveFavorite[m[33m)[m
+[35m|[m [32m|[m [36m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[35m|[m [32m|[m [36m|[m Date:   Wed Oct 13 12:10:50 2021 +0300
+[35m|[m [32m|[m [36m|[m 
+[35m|[m [32m|[m [36m|[m     create styles for movie elements
+[35m|[m [32m|[m [36m|[m 
+[35m|[m [32m|[m * [33mcommit 1ddda7d2751b6d0d755d4b47fdde819a796f6471[m
+[35m|[m [32m|[m [36m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[35m|[m [32m|[m [36m|[m Date:   Wed Oct 13 11:16:43 2021 +0300
+[35m|[m [32m|[m [36m|[m 
+[35m|[m [32m|[m [36m|[m     create logic styled
+[35m|[m [32m|[m [36m|[m 
+[35m|[m [32m|[m * [33mcommit 7d8868821c1d723e20f59c56d86d35b87eefaa1b[m
+[35m|[m [32m|[m[35m/[m  Author: kodep <vladislav.zaharov@kodep.ru>
+[35m|[m[35m/[m[32m|[m   Date:   Wed Oct 13 10:22:15 2021 +0300
+[35m|[m [32m|[m   
+[35m|[m [32m|[m       create main styled
+[35m|[m [32m|[m 
+* [32m|[m [33mcommit 90228b3f3a80437df763b3772a07609a95ee436f[m[33m ([m[1;31morigin/mainPage3[m[33m, [m[1;32mmainPage3[m[33m)[m
+[36m|[m [32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [32m|[m Date:   Fri Oct 8 09:55:03 2021 +0300
+[36m|[m [32m|[m 
+[36m|[m [32m|[m     add ls for film
+[36m|[m [32m|[m 
+* [32m|[m [33mcommit d7bc2f12dc71dee2ac2ea60bd2c4f66ad52776b4[m
+[36m|[m [32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [32m|[m Date:   Wed Oct 6 14:45:02 2021 +0300
+[36m|[m [32m|[m 
+[36m|[m [32m|[m     taking genres up
+[36m|[m [32m|[m 
+* [32m|[m [33mcommit beb247f95f63b73a09b11a8d4f26927831b76d0c[m
+[36m|[m [32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [32m|[m Date:   Wed Oct 6 11:30:28 2021 +0300
+[36m|[m [32m|[m 
+[36m|[m [32m|[m     change defolt lang
+[36m|[m [32m|[m   
+[36m|[m [32m|[m * [33mcommit 34e4c1df390e175d6bbc1cc8a1e9eeb29081afdd[m[33m ([m[1;35mrefs/stash[m[33m)[m
+[36m|[m [32m|[m[32m/[m[1;32m|[m Merge: 4cb6a73 3cdd8f0
+[36m|[m [32m|[m [1;32m|[m Author: git stash <vladislav.zaharov@kodep.ru>
+[36m|[m [32m|[m [1;32m|[m Date:   Thu Oct 14 17:25:32 2021 +0300
+[36m|[m [32m|[m [1;32m|[m 
+[36m|[m [32m|[m [1;32m|[m     WIP on (no branch): 4cb6a73 Main page3 (#6)
+[36m|[m [32m|[m [1;32m|[m 
+[36m|[m [32m|[m * [33mcommit 3cdd8f0825591c1c64fe9e3abab040095c5e79f1[m
+[36m|[m [32m|[m[32m/[m  Author: git stash <vladislav.zaharov@kodep.ru>
+[36m|[m [32m|[m   Date:   Thu Oct 14 17:25:32 2021 +0300
+[36m|[m [32m|[m   
+[36m|[m [32m|[m       index on (no branch): 4cb6a73 Main page3 (#6)
+[36m|[m [32m|[m 
+[36m|[m * [33mcommit 4cb6a736900f1415b76ae94b8816f286f9f0bf3c[m
+[36m|[m [1;32m|[m Author: VladZakharov2001 <70758148+VladZakharov2001@users.noreply.github.com>
+[36m|[m [1;32m|[m Date:   Tue Oct 12 16:17:08 2021 +0300
+[36m|[m [1;32m|[m 
+[36m|[m [1;32m|[m     Main page3 (#6)
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * create authorization
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * create login
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * home auth
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * correction PR
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * delete cl
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * fixed validation
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * fixed conditional, string
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * i18n
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * home
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * addFilm
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * home2
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * Create auth (#3)
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * create authorization
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * create login
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * home auth
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * correction PR
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * delete cl
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * fixed validation
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * fixed conditional, string
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * i18n
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     Co-authored-by: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * main page
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * delete console log
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * add .env
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * Getting Data Movies
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * fixed i18n and add services
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * fixed reques genres
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * delete console log
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * change defolt lang
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * taking genres up
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     * add ls for film
+[36m|[m [1;32m|[m     
+[36m|[m [1;32m|[m     Co-authored-by: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [1;32m|[m   
+[36m|[m [1;32m|[m * [33mcommit c065c58ceaa5fda7295f5e4e38b32a843182ebf4[m[33m ([m[1;32mbloclview[m[33m)[m
+[36m|[m [1;32m|[m [1;33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [1;32m|[m [1;33m|[m Date:   Thu Oct 14 17:13:28 2021 +0300
+[36m|[m [1;32m|[m [1;33m|[m 
+[36m|[m [1;32m|[m [1;33m|[m     fixed ui
+[36m|[m [1;32m|[m [1;33m|[m 
+[36m|[m [1;32m|[m * [33mcommit e35fdead1da2732e45b71edd2e5a916e1940a06a[m
+[36m|[m [1;32m|[m [1;33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [1;32m|[m [1;33m|[m Date:   Tue Oct 12 16:20:31 2021 +0300
+[36m|[m [1;32m|[m [1;33m|[m 
+[36m|[m [1;32m|[m [1;33m|[m     create add favorite film
+[36m|[m [1;32m|[m [1;33m|[m 
+[36m|[m [1;32m|[m * [33mcommit 8ff7b1e82fe4012a028226c23ac8068d8712824a[m
+[36m|[m [1;32m|[m [1;33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [1;32m|[m [1;33m|[m Date:   Fri Oct 8 09:43:21 2021 +0300
+[36m|[m [1;32m|[m [1;33m|[m 
+[36m|[m [1;32m|[m [1;33m|[m     range
+[36m|[m [1;32m|[m [1;33m|[m 
+[36m|[m [1;32m|[m * [33mcommit 237559902b64cb7f7576b7ed03b0d8c518ad9197[m
+[36m|[m [1;32m|[m [1;33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m [1;32m|[m [1;33m|[m Date:   Wed Oct 6 12:23:37 2021 +0300
+[36m|[m [1;32m|[m [1;33m|[m 
+[36m|[m [1;32m|[m [1;33m|[m     add block
+[36m|[m [1;32m|[m [1;33m|[m 
+[36m|[m [1;32m|[m * [33mcommit 9c36495dc234dc65e80c8326abe3a579eeabfb78[m
+[36m|[m [1;32m|[m[36m/[m  Author: kodep <vladislav.zaharov@kodep.ru>
+[36m|[m[36m/[m[1;32m|[m   Date:   Wed Oct 6 10:19:19 2021 +0300
+[36m|[m [1;32m|[m   
+[36m|[m [1;32m|[m       begin block view
+[36m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit 61a18cd9433a773282d0205056b3fdc56dae5e3f[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Tue Oct 5 17:37:17 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     delete console log
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit 25079f346896bc123d398adc7b993f9a593bc046[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Tue Oct 5 17:32:53 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     fixed reques genres
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit a2cb651b44cd39e0b194202200e69c32f590e4ba[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Mon Oct 4 16:14:01 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     fixed i18n and add services
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit 2c6389752c72892c20061e9af74c7cd59e523545[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Fri Oct 1 13:43:59 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     Getting Data Movies
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit fd0c0bd10299f05f9903f2a28f6a6ed830021a59[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Mon Sep 27 12:52:19 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     add .env
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit 95d2034073c902461898ccf9374b90e95e2db5a4[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Mon Sep 27 09:31:12 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     delete console log
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit 6590838a26575ed928a3188f4b766aa26899b4dd[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Mon Sep 27 09:15:04 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     main page
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit 54cb5e68ce35b575b47f1a36a55791101b70fef1[m
+[1;33m|[m [1;32m|[m Author: VladZakharov2001 <70758148+VladZakharov2001@users.noreply.github.com>
+[1;33m|[m [1;32m|[m Date:   Tue Sep 21 18:59:40 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     Create auth (#3)
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     * create authorization
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     * create login
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     * home auth
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     * correction PR
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     * delete cl
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     * fixed validation
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     * fixed conditional, string
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     * i18n
+[1;33m|[m [1;32m|[m     
+[1;33m|[m [1;32m|[m     Co-authored-by: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit d61dbbdae5cf0eef34e29f9b6858cac26961b6e9[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Fri Sep 24 17:53:38 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     home2
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit b1d9fdd5f3773ad86aecea1b981519d47bfdc12c[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Thu Sep 23 16:02:13 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     addFilm
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit ed89ac5430f7f3bab450ae385c0d7e1ddec76603[m
+[1;33m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m Date:   Wed Sep 22 16:49:06 2021 +0300
+[1;33m|[m [1;32m|[m 
+[1;33m|[m [1;32m|[m     home
+[1;33m|[m [1;32m|[m   
+[1;33m|[m [1;32m|[m * [33mcommit 657f787a6aa8b1e19f577fd1d1ea6735c3231c20[m[33m ([m[1;31morigin/restore-commits[m[33m, [m[1;32mrestore-commits[m[33m)[m
+[1;33m|[m [1;32m|[m [1;34m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m [1;34m|[m Date:   Mon Sep 27 09:31:12 2021 +0300
+[1;33m|[m [1;32m|[m [1;34m|[m 
+[1;33m|[m [1;32m|[m [1;34m|[m     delete console log
+[1;33m|[m [1;32m|[m [1;34m|[m 
+[1;33m|[m [1;32m|[m * [33mcommit 6696ef21e1a6f9aec6d969d56923650ee8639008[m
+[1;33m|[m [1;32m|[m [1;34m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m [1;34m|[m Date:   Mon Sep 27 09:15:04 2021 +0300
+[1;33m|[m [1;32m|[m [1;34m|[m 
+[1;33m|[m [1;32m|[m [1;34m|[m     main page
+[1;33m|[m [1;32m|[m [1;34m|[m 
+[1;33m|[m [1;32m|[m * [33mcommit 9877992414d91c081645be69384dfad8de5935c4[m[33m ([m[1;31morigin/mainPage[m[33m, [m[1;31morigin/homemove[m[33m, [m[1;32mmainPage[m[33m, [m[1;32mhomemove[m[33m)[m
+[1;33m|[m [1;32m|[m [1;34m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m [1;34m|[m Date:   Fri Sep 24 17:53:38 2021 +0300
+[1;33m|[m [1;32m|[m [1;34m|[m 
+[1;33m|[m [1;32m|[m [1;34m|[m     home2
+[1;33m|[m [1;32m|[m [1;34m|[m 
+[1;33m|[m [1;32m|[m * [33mcommit 4b2d211052ef6df3fad067c39c832abf072b60cc[m
+[1;33m|[m [1;32m|[m [1;34m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m [1;32m|[m [1;34m|[m Date:   Thu Sep 23 16:02:13 2021 +0300
+[1;33m|[m [1;32m|[m [1;34m|[m 
+[1;33m|[m [1;32m|[m [1;34m|[m     addFilm
+[1;33m|[m [1;32m|[m [1;34m|[m 
+[1;33m|[m [1;32m|[m * [33mcommit e5aecdfb7202c864111e54a2059d31b80573945c[m
+[1;33m|[m [1;32m|[m[1;33m/[m  Author: kodep <vladislav.zaharov@kodep.ru>
+[1;33m|[m[1;33m/[m[1;32m|[m   Date:   Wed Sep 22 16:49:06 2021 +0300
+[1;33m|[m [1;32m|[m   
+[1;33m|[m [1;32m|[m       home
+[1;33m|[m [1;32m|[m 
+* [1;32m|[m [33mcommit 159d592084246b64a91f4cf99523cd7ef78b0d86[m[33m ([m[1;32mserviceApi[m[33m)[m
+[1;35m|[m[1;32m\[m[1;32m|[m Merge: c11a445 4d0beb5
+[1;35m|[m [1;32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;35m|[m [1;32m|[m Date:   Mon Sep 27 10:20:02 2021 +0300
+[1;35m|[m [1;32m|[m 
+[1;35m|[m [1;32m|[m     Merge branch 'main' of github.com:VladZakharov2001/movies_frontend
+[1;35m|[m [1;32m|[m 
+[1;35m|[m * [33mcommit 4d0beb5f6fcd2842d244723ffca2b4aebf07ccb2[m
+[1;35m|[m [1;36m|[m Author: VladZakharov2001 <70758148+VladZakharov2001@users.noreply.github.com>
+[1;35m|[m [1;36m|[m Date:   Tue Sep 21 18:59:40 2021 +0300
+[1;35m|[m [1;36m|[m 
+[1;35m|[m [1;36m|[m     Create auth (#3)
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     * create authorization
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     * create login
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     * home auth
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     * correction PR
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     * delete cl
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     * fixed validation
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     * fixed conditional, string
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     * i18n
+[1;35m|[m [1;36m|[m     
+[1;35m|[m [1;36m|[m     Co-authored-by: kodep <vladislav.zaharov@kodep.ru>
+[1;35m|[m [1;36m|[m   
+[1;35m|[m *   [33mcommit 41428b23d43399af00acb1b2c14436de6f66a6b9[m
+[1;35m|[m [31m|[m[32m\[m  Merge: 78e3103 ee39f0d
+[1;35m|[m [31m|[m [32m|[m Author: Andrey Reshetov <andr.reshetov@gmail.com>
+[1;35m|[m [31m|[m [32m|[m Date:   Tue Sep 14 15:26:23 2021 +0300
+[1;35m|[m [31m|[m [32m|[m 
+[1;35m|[m [31m|[m [32m|[m     Merge pull request #1 from VladZakharov2001/defaultApp
+[1;35m|[m [31m|[m [32m|[m     
+[1;35m|[m [31m|[m [32m|[m     initional app
+[1;35m|[m [31m|[m [32m|[m   
+[1;35m|[m [31m|[m [32m|[m * [33mcommit ae51d64a211c63bf746d65d4620943548ceb3ef4[m[33m ([m[1;31morigin/mainPage2[m[33m, [m[1;32mmainPage2[m[33m)[m
+[1;35m|[m [31m|[m [32m|[m [33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;35m|[m [31m|[m [32m|[m [33m|[m Date:   Mon Sep 27 09:31:12 2021 +0300
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m [33m|[m     delete console log
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m * [33mcommit 8336cc053a87af963e38bb4708ec7d6a486d5ac7[m
+[1;35m|[m [31m|[m [32m|[m [33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;35m|[m [31m|[m [32m|[m [33m|[m Date:   Mon Sep 27 09:15:04 2021 +0300
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m [33m|[m     main page
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m * [33mcommit a262ee3564d71e1c24dd2d45e926a1f48be91c2c[m
+[1;35m|[m [31m|[m [32m|[m [33m|[m Author: VladZakharov2001 <70758148+VladZakharov2001@users.noreply.github.com>
+[1;35m|[m [31m|[m [32m|[m [33m|[m Date:   Tue Sep 21 18:59:40 2021 +0300
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m [33m|[m     Create auth (#3)
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     * create authorization
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     * create login
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     * home auth
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     * correction PR
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     * delete cl
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     * fixed validation
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     * fixed conditional, string
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     * i18n
+[1;35m|[m [31m|[m [32m|[m [33m|[m     
+[1;35m|[m [31m|[m [32m|[m [33m|[m     Co-authored-by: kodep <vladislav.zaharov@kodep.ru>
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m * [33mcommit 259768ce64d063fd1d7c1412514e5b0c419d4eaa[m[33m ([m[1;31morigin4/homemove[m[33m)[m
+[1;35m|[m [31m|[m [32m|[m [33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;35m|[m [31m|[m [32m|[m [33m|[m Date:   Fri Sep 24 17:53:38 2021 +0300
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m [33m|[m     home2
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m * [33mcommit 36702f2dc1e84b85843795c81d01c148e37ed491[m
+[1;35m|[m [31m|[m [32m|[m [33m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[1;35m|[m [31m|[m [32m|[m [33m|[m Date:   Thu Sep 23 16:02:13 2021 +0300
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m [33m|[m     addFilm
+[1;35m|[m [31m|[m [32m|[m [33m|[m 
+[1;35m|[m [31m|[m [32m|[m * [33mcommit 54e3503bf14158f01031020c0386df065bdee731[m
+[1;35m|[m [31m|[m[1;35m_[m[32m|[m[1;35m/[m  Author: kodep <vladislav.zaharov@kodep.ru>
+[1;35m|[m[1;35m/[m[31m|[m [32m|[m   Date:   Wed Sep 22 16:49:06 2021 +0300
+[1;35m|[m [31m|[m [32m|[m   
+[1;35m|[m [31m|[m [32m|[m       home
+[1;35m|[m [31m|[m [32m|[m 
+* [31m|[m [32m|[m [33mcommit c11a445636e8c99999c3a3ed68d93212b88cd938[m[33m ([m[1;31morigin/createAuth[m[33m, [m[1;32mcreateAuth[m[33m)[m
+[33m|[m [31m|[m [32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[33m|[m [31m|[m [32m|[m Date:   Mon Sep 20 18:01:21 2021 +0300
+[33m|[m [31m|[m [32m|[m 
+[33m|[m [31m|[m [32m|[m     i18n
+[33m|[m [31m|[m [32m|[m 
+* [31m|[m [32m|[m [33mcommit 084d53ae2741aa07fc42c12a714204058a485f4c[m
+[33m|[m [31m|[m [32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[33m|[m [31m|[m [32m|[m Date:   Fri Sep 17 16:26:50 2021 +0300
+[33m|[m [31m|[m [32m|[m 
+[33m|[m [31m|[m [32m|[m     fixed conditional, string
+[33m|[m [31m|[m [32m|[m 
+* [31m|[m [32m|[m [33mcommit 1e416dfc8624c54309f630c70a89847ce427b57c[m
+[33m|[m [31m|[m [32m|[m Author: kodep <vladislav.zaharov@kodep.ru>
+[33m|[m [31m|[m [32m|[m Date:   Fri Sep 17 16:17:11 2021 +0300
+[33m|[m [31m|[m [32m|[m 
+[3
