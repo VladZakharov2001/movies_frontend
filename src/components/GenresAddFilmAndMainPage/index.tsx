@@ -27,7 +27,6 @@ export const GenresAddFilmAndMainPage = () => {
   };
 
   isValidFilmsIdAndFilms();
-
   useEffect(() => {
     setGenresId(
       genres

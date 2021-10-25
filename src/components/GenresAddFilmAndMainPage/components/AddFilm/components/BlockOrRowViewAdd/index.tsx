@@ -21,8 +21,8 @@ import {
 interface IProps {
   genresId: Array<number>;
   langFlag: string;
-  range: string;
-  currentDate: string;
+  range: number;
+  currentDate: number;
   view: boolean;
 }
 
@@ -33,29 +33,24 @@ const BlockOrRowViewAdd: FC<IProps> = ({
   currentDate,
   view,
 }): JSX.Element => {
-  const [films, setFilms] = useState<any[]>(JSON.parse(localStorage["films"]));
-
-  const [filmsId, setFilmsId] = useState<number[]>(
-    JSON.parse(localStorage["filmsId"])
+  const [films, setFilms] = useState<any[]>([]);
+  const [filmsIds, setfilmsIds] = useState<number[]>(
+    JSON.parse(localStorage["filmsIds"])
   );
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    GetDataMovies(
-      Number(currentDate),
-      langFlag,
-      DEFAULT_PAGE,
-      genresId,
-      Number(range)
-    ).then((res) => {
-      setFilms(res);
-    });
+    GetDataMovies(currentDate, langFlag, DEFAULT_PAGE, genresId, range).then(
+      (res) => {
+        setFilms(res);
+      }
+    );
   }, [currentDate, range, genresId]);
 
-  localStorage.setItem("filmsId", JSON.stringify(filmsId));
+  localStorage.setItem("filmsIds", JSON.stringify(filmsIds));
 
   const saveFilm = (id: number): void => {
-    setFilmsId([...filmsId, id]);
+    setfilmsIds([...filmsIds, id]);
   };
 
   return (
@@ -81,7 +76,7 @@ const BlockOrRowViewAdd: FC<IProps> = ({
                   <StyledFIlmItemElement>
                     <Button
                       color={
-                        filmsId.includes(film.id) ? "primary" : "secondary"
+                        filmsIds.includes(film.id) ? "primary" : "secondary"
                       }
                       onClick={() => saveFilm(film.id)}
                     >

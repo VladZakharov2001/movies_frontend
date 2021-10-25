@@ -2,20 +2,16 @@ import BlockOrRowViewAdd from "./components/BlockOrRowViewAdd";
 import { useState, useEffect } from "react";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { isValidFilerFilms } from "../../../../services/FillandisValidateData";
+import { DEFAULT_RANGE, DEFAULT_YEAR } from "../../../../GlobalConstants";
 interface IProps {
   genresId: Array<number>;
   langFlag: string;
   view: boolean;
 }
 const AddFilm: FC<IProps> = ({ genresId, langFlag, view }): JSX.Element => {
-  isValidFilerFilms();
-
   const [date, setDate] = useState<number[]>([]);
-  const [currentDate, setCurrentDate] = useState<string>(
-    JSON.parse(localStorage["currentDate"])
-  );
-  const [range, setRange] = useState<string>(JSON.parse(localStorage["range"]));
+  const [currentDate, setCurrentDate] = useState<number>(DEFAULT_YEAR);
+  const [range, setRange] = useState<number>(DEFAULT_RANGE);
 
   const { t, i18n } = useTranslation();
   useEffect(() => {
@@ -36,8 +32,7 @@ const AddFilm: FC<IProps> = ({ genresId, langFlag, view }): JSX.Element => {
           max="100"
           step="1"
           onChange={(e) => {
-            localStorage.setItem("range", JSON.stringify(e.target.value));
-            setRange(e.target.value);
+            setRange(Number(e.target.value));
           }}
         />
       </div>
@@ -46,8 +41,7 @@ const AddFilm: FC<IProps> = ({ genresId, langFlag, view }): JSX.Element => {
         <select
           value={currentDate}
           onChange={(e) => {
-            localStorage.setItem("currentDate", JSON.stringify(e.target.value));
-            setCurrentDate(e.target.value);
+            setCurrentDate(Number(e.target.value));
           }}
         >
           {date && date.map((dateNum, index) => <option>{dateNum}</option>)}

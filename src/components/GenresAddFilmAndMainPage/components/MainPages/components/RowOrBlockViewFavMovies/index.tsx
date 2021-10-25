@@ -33,14 +33,13 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
 }): JSX.Element => {
   const { t, i18n } = useTranslation();
   let [filmsI, setFilmsI] = useState<any[]>([]);
-  const [viewedFilmsId, setViewedFilmsId] = useState<number[]>([]);
-  const [filmsId, setFilmsId] = useState<number[]>(
-    JSON.parse(localStorage["filmsId"])
+  const [filmsIds, setfilmsIds] = useState<number[]>(
+    JSON.parse(localStorage["filmsIds"])
   );
 
   useEffect(() => {
     setFilmsI([]);
-    filmsId.map((ari) => {
+    filmsIds.map((ari) => {
       GetInfoFilmById(ari).then((res) => {
         setFilmsI((prev) => prev.concat({ ...res, ...{ viewedFilm: false } }));
       });
@@ -57,10 +56,10 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
   };
 
   useEffect(() => {
-    setFilmsId(filmsI.map((film) => film.id));
+    setfilmsIds(filmsI.map((film) => film.id));
   }, [filmsI]);
 
-  localStorage.setItem("filmsId", JSON.stringify(filmsId));
+  localStorage.setItem("filmsIds", JSON.stringify(filmsIds));
 
   return (
     <div>
