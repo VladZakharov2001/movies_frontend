@@ -33,7 +33,7 @@ const BlockOrRowViewAdd: FC<IProps> = ({
   currentDate,
   view,
 }): JSX.Element => {
-  const [films, setFilms] = useState<any[]>([]);
+  const [informationAboutFilms, setInformationAboutFilms] = useState<any[]>([]);
   const [filmsIds, setfilmsIds] = useState<number[]>(
     JSON.parse(localStorage["filmsIds"])
   );
@@ -42,22 +42,22 @@ const BlockOrRowViewAdd: FC<IProps> = ({
   useEffect(() => {
     GetDataMovies(currentDate, langFlag, DEFAULT_PAGE, genresId, range).then(
       (res) => {
-        setFilms(res);
+        setInformationAboutFilms(res);
       }
     );
   }, [currentDate, range, genresId]);
 
-  localStorage.setItem("filmsIds", JSON.stringify(filmsIds));
-
   const saveFilm = (id: number): void => {
-    setfilmsIds([...filmsIds, id]);
+    let newfilmsIds = [...filmsIds, id];
+    setfilmsIds(newfilmsIds);
+    localStorage.setItem("filmsIds", JSON.stringify(newfilmsIds));
   };
 
   return (
     <div>
       <StyledLocationFromViews viewPage={view}>
-        {films &&
-          films.map((film, index) => {
+        {informationAboutFilms &&
+          informationAboutFilms.map((film, index) => {
             return (
               <div>
                 <StyledFIlmItem viewPage={view}>

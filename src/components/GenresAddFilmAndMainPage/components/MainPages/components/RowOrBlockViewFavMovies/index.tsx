@@ -32,40 +32,45 @@ const RowOrBlockViewFavMovies: FC<IProps> = ({
   view,
 }): JSX.Element => {
   const { t, i18n } = useTranslation();
-  let [filmsI, setFilmsI] = useState<any[]>([]);
+  let [informationAboutFilms, setInformationAboutFilms] = useState<any[]>([]);
   const [filmsIds, setfilmsIds] = useState<number[]>(
     JSON.parse(localStorage["filmsIds"])
   );
 
   useEffect(() => {
-    setFilmsI([]);
+    setInformationAboutFilms([]);
     filmsIds.map((ari) => {
       GetInfoFilmById(ari).then((res) => {
-        setFilmsI((prev) => prev.concat({ ...res, ...{ viewedFilm: false } }));
+        setInformationAboutFilms((prev) =>
+          prev.concat({ ...res, ...{ viewedFilm: false } })
+        );
       });
     });
   }, []);
 
   const handleView = (index: number): void => {
-    filmsI[index].viewedFilm = !filmsI[index].viewedFilm;
-    setFilmsI([...filmsI]);
+    informationAboutFilms[index].viewedFilm =
+      !informationAboutFilms[index].viewedFilm;
+    setInformationAboutFilms([...informationAboutFilms]);
   };
 
   const deleteView = (idfilm: number): void => {
-    setFilmsI(filmsI.filter((film) => film.id !== idfilm));
+    setInformationAboutFilms(
+      informationAboutFilms.filter((film) => film.id !== idfilm)
+    );
   };
 
   useEffect(() => {
-    setfilmsIds(filmsI.map((film) => film.id));
-  }, [filmsI]);
-
-  localStorage.setItem("filmsIds", JSON.stringify(filmsIds));
+    let newFilmsIds = informationAboutFilms.map((film) => film.id);
+    localStorage.setItem("filmsIds", JSON.stringify(newFilmsIds));
+    setfilmsIds(newFilmsIds);
+  }, [informationAboutFilms]);
 
   return (
     <div>
       <h4> {t("addFilmPage.youFavMovies")} </h4>
       <StyledLocationFromViews viewPage={view}>
-        {filmsI.map((film, index) => {
+        {informationAboutFilms.map((film, index) => {
           return (
             <div>
               <StyledFIlmItem viewPage={view}>
